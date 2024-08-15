@@ -16,6 +16,12 @@
     <Filter Include="TestCode">
       <UniqueIdentifier>{d43e75cf-811b-46d9-9242-a154264951b7}</UniqueIdentifier>
     </Filter>
+    <Filter Include="WorkingTable">
+      <UniqueIdentifier>{a2785ab8-d6d1-4f63-a5b3-6e2c159fa21b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="DesignPattern">
+      <UniqueIdentifier>{b3f8b41e-f4f4-484a-9df4-8db7f70591a7}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -30,6 +36,15 @@
     <ClCompile Include="template_vector_param.cpp">
       <Filter>TestCode</Filter>
     </ClCompile>
+    <ClCompile Include="Conn.cpp">
+      <Filter>WorkingTable</Filter>
+    </ClCompile>
+    <ClCompile Include="ConnMap.cpp">
+      <Filter>WorkingTable</Filter>
+    </ClCompile>
+    <ClCompile Include="Template_Singleton.cpp">
+      <Filter>TestCode</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="GameServer.h">
@@ -37,6 +52,15 @@
     </ClInclude>
     <ClInclude Include="PacketProcess.h">
       <Filter>소스 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="Conn.h">
+      <Filter>WorkingTable</Filter>
+    </ClInclude>
+    <ClInclude Include="Singleton.h">
+      <Filter>DesignPattern</Filter>
+    </ClInclude>
+    <ClInclude Include="ConnMap.h">
+      <Filter>WorkingTable</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

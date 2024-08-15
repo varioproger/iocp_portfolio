@@ -1,6 +1,7 @@
 #pragma comment(lib,"TCP_Lib.lib")
 #include"PacketProcess.h"
 #include"GameServer.h"
+#include"ConnMap.h"
 #include<vector>
 #include<iostream>
 #include <stdlib.h>
@@ -48,7 +49,6 @@ BOOL CtrlHandler(DWORD fdwCtrlType)
 int main()
 {
 	SetConsoleCtrlHandler((PHANDLER_ROUTINE)CtrlHandler, TRUE);
-
 	std::vector< PacketProcess> PProcess;
 	PProcess.clear();
 	PProcess.emplace_back();
@@ -77,7 +77,9 @@ int main()
 			continue;
 		}
 		GS.Register(client_sock, REGISTER_KEY);
+
 		// Conn Map에 추가
+		ConnMap::getInstance()->Create(client_sock);
 		// Rev 진행 GS.CompleteRecv();
 	}
 	GS.JoinThread();
