@@ -1,6 +1,6 @@
 #include "SRWLockGuard.h"
 
-SWRLockShGuard::SWRLockShGuard(SRWLock* ptr)
+SRWLockShGuard::SRWLockShGuard(SRWLock* ptr)
 {
 	m_psrw = ptr;
 	if (m_psrw)
@@ -9,7 +9,7 @@ SWRLockShGuard::SWRLockShGuard(SRWLock* ptr)
 	}
 }
 
-SWRLockShGuard::~SWRLockShGuard()
+SRWLockShGuard::~SRWLockShGuard()
 {
 	if (m_psrw)
 	{
@@ -18,7 +18,7 @@ SWRLockShGuard::~SWRLockShGuard()
 	}
 }
 
-SWRLockExGuard::SWRLockExGuard(SRWLock* ptr)
+SRWLockExGuard::SRWLockExGuard(SRWLock* ptr)
 {
 	m_psrw = ptr;
 	if (m_psrw)
@@ -27,7 +27,7 @@ SWRLockExGuard::SWRLockExGuard(SRWLock* ptr)
 	}
 }
 
-SWRLockExGuard::~SWRLockExGuard()
+SRWLockExGuard::~SRWLockExGuard()
 {
 	if (m_psrw)
 	{

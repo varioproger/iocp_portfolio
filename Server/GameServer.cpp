@@ -1,5 +1,7 @@
 #include "GameServer.h"
 #include"ConnMap.h"
+#include"../Global/PacketDefinition.h"
+#include"SRWLockGuard.h"
 GameServer::GameServer()
 {
 }
@@ -14,9 +16,9 @@ void GameServer::WorkerThread(LPVOID arg)
 	int retval = 0;
 	while (1)
 	{
-		DWORD cbTransferrd;
-		ULONG_PTR ulkey;
-		WSAOverLapped_EX* overlapped;
+		DWORD cbTransferrd = 0;
+		Conn* Conn = nullptr;
+		WSAOverLapped_EX* overlapped = nullptr;
 
 		/*
 * 		Returns nonzero (TRUE) if successful or zero (FALSE) otherwise.
@@ -30,11 +32,7 @@ void GameServer::WorkerThread(LPVOID arg)
 		lpNumberOfBytes, lpCompletionKey, and lpOverlapped. 
 		To get extended error information, call GetLastError.
 		*/
-		retval = GetQueuedCompletionStatus(hCP, &cbTransferrd, &ulkey, (LPOVERLAPPED*)&overlapped, INFINITE);
-		if (ulkey == 1)//PostStopSignal()로 보낸값
-		{
-			break;
-		}
+		retval = GetQueuedCompletionStatus(hCP, &cbTransferrd, reinterpret_cast<ULONG_PTR*>(&Conn), reinterpret_cast<LPOVERLAPPED*>(&overlapped), INFINITE);
 		if (retval == 0 || cbTransferrd == 0)
 		{
 			if (retval == 0)
@@ -48,17 +46,16 @@ void GameServer::WorkerThread(LPVOID arg)
 				DWORD lpdwFlags;
 				 
 				// retrieves the results of an overlapped operation on the specified socket.
-				WSAGetOverlappedResult(ulkey, &overlapped->overlapped, &lpcbTransfer, false, &lpdwFlags);
+				WSAGetOverlappedResult(Conn->GetSocket(), &overlapped->m_overlapped, &lpcbTransfer, false, &lpdwFlags);
 			}
-			ConnMap::getInstance()->Delete((Conn*)overlapped->ptr);
+			ConnMap::getInstance()->Delete(Conn);
 			//Event->ConEnd((Conn*)overlapped->ptr);
 			continue;
 		}
-		Conn* conn = (Conn*)overlapped->ptr;
-		switch (overlapped->type)
+		switch (overlapped->m_type)
 		{
 		case ECIoType::IO_RECV:
-			if (CompleteRecv(conn, cbTransferrd) == ECSocketResult::FINISHED)
+			if (CompleteRecv(overlapped, cbTransferrd) == ECSocketResult::FINISHED)
 			{
 				//Event->AnalyzeProtocol(conn);
 			}
@@ -68,7 +65,7 @@ void GameServer::WorkerThread(LPVOID arg)
 			}		
 			break;
 		case ECIoType::IO_SEND:
-			if (CompleteSend(conn, cbTransferrd) == ECSocketResult::SOC_ERROR)
+			if (CompleteSend(overlapped, cbTransferrd) == ECSocketResult::SOC_ERROR)
 			{
 				printf("Send Eror\n");
 			}
@@ -76,18 +73,56 @@ void GameServer::WorkerThread(LPVOID arg)
 		default:
 			break;
 		}
-		conn->StartRecv();
+		Conn->StartRecv();
 	}
 	return;
 }
 
 ECSocketResult GameServer::CompleteSend(LPVOID conn, int Bytes)
 {
+	Conn* ptr = (Conn*)conn;
+	SRWLockExGuard lock(&ptr->GetSendLock());
+
+	//SendBytes += _Bytes;
+//if (SendSize == SendBytes) // 패킷 전부 다 보냈다.
+//{
+//	memset(Buf, 0, SendSize);
+//	SendBytes = 0;
+//	SendSize = 0;
+//	return ECSocketResult::FINISHED;
+//}
+//else
+//{
+//	if (Send() == FALSE)
+//	{
+//		ECSocketResult::SOC_ERROR;
+//	}
+//}
+//return ECSocketResult::UNFINISHED;
+// 
+// 
+
 	return ECSocketResult::FINISHED;
+
 }
 
 ECSocketResult GameServer::CompleteRecv(LPVOID conn, int Bytes)
 {
+	Conn* ptr = (Conn*)conn;
+	SRWLockExGuard lock(&ptr->GetRecvLock());
+	//ptr->
+//RecvBytes += _Bytes;
+//if (RecvBytes == sizeof(int))
+//{
+//	memcpy(&PacketSize, Buf, sizeof(int));
+//}
+//if (RecvBytes == PacketSize)
+//{
+//	RecvBytes = 0;
+//	PacketSize = 0;
+//	return ECSocketResult::FINISHED;
+//}
+//return ECSocketResult::UNFINISHED;
 	return ECSocketResult::FINISHED;
 }
 

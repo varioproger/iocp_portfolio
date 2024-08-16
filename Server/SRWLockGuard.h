@@ -1,21 +1,21 @@
 #pragma once
 #include"SRWLock.h"
 
-class SWRLockShGuard
+class SRWLockShGuard
 {
 private:
 	SRWLock* m_psrw;
 public:
-	SWRLockShGuard(SRWLock* psrw);
-	~SWRLockShGuard();
+	SRWLockShGuard(SRWLock* psrw);
+	~SRWLockShGuard();
 };
 
-class SWRLockExGuard
+class SRWLockExGuard
 {
 private:
 	SRWLock* m_psrw;
 public:
-	SWRLockExGuard(SRWLock* psrw);
-	~SWRLockExGuard();
+	SRWLockExGuard(SRWLock* psrw);
+	~SRWLockExGuard();
 };
 

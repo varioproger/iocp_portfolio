@@ -2,13 +2,19 @@
 #include<GlobalDef.h>
 #include"ServerGlobalDef.h"
 #include"SRWLock.h"
+
+
 class Conn
 {
+public:
+	WSAOverLapped_EX m_recv_overlapped;
+	WSAOverLapped_EX m_send_overlapped;
 public:
 	Conn(SOCKET sock);
 	~Conn();
 public:
-	SRWLock& GetLock();
+	SRWLock& GetRecvLock();
+	SRWLock& GetSendLock();
 	SOCKET GetSocket();
 	//int GetPacketRecvSize();
 	//void SetPacketRecvSize();
@@ -40,18 +46,14 @@ private:
 	BOOL Send(char* buf, int len);
 private:
 	SOCKET m_sock;
+	SRWLock m_recv_lock;
+	SRWLock m_send_lock;
+private:
 
 	int m_packet_recv_size;
 	int m_recv_bytes;
-	char m_recv_buf[KB_4];
 	
 	int m_packet_send_size;
 	int m_send_bytes;
-	char m_send_buf[KB_1];
-	WSAOverLapped_EX m_over;
-
-	WSABUF m_wbuf;
-
-	SRWLock m_lock;
 };
 

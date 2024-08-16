@@ -33,12 +33,6 @@
     <ClInclude Include="GlobalDef.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
-    <ClInclude Include="WRecv.h">
-      <Filter>헤더 파일</Filter>
-    </ClInclude>
-    <ClInclude Include="WSend.h">
-      <Filter>헤더 파일</Filter>
-    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="pch.cpp">
@@ -51,12 +45,6 @@
       <Filter>소스 파일</Filter>
     </ClCompile>
     <ClCompile Include="Error0.cpp">
-      <Filter>소스 파일</Filter>
-    </ClCompile>
-    <ClCompile Include="WSend.cpp">
-      <Filter>소스 파일</Filter>
-    </ClCompile>
-    <ClCompile Include="WRecv.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
   </ItemGroup>

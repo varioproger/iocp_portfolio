@@ -76,11 +76,12 @@ int main()
 			memset(str, 0, sizeof(str));
 			continue;
 		}
-		GS.Register(client_sock, REGISTER_KEY);
-
-		// Conn Map에 추가
 		auto client_conn = ConnMap::getInstance()->Insert(client_sock);
+		// 포인터가 다른 포인터 형식으로 변환될 수 있도록 합니다. 또한 정수 계열 형식이 포인터 형식으로 변환될 수 있도록 하고 그 반대로도 변환될 수 있도록 합니다.
+		GS.Register(client_sock, reinterpret_cast<ULONG_PTR>(client_conn));
+
 		client_conn->StartRecv();
+
 	}
 	GS.JoinThread();
 	return 0;

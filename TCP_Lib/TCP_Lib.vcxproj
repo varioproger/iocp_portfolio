@@ -157,8 +157,6 @@
     <ClInclude Include="framework.h" />
     <ClInclude Include="GlobalDef.h" />
     <ClInclude Include="pch.h" />
-    <ClInclude Include="WRecv.h" />
-    <ClInclude Include="WSend.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="BaseTCP.cpp" />
@@ -170,8 +168,6 @@
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
     </ClCompile>
-    <ClCompile Include="WRecv.cpp" />
-    <ClCompile Include="WSend.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

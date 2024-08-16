@@ -63,6 +63,12 @@
     <ClCompile Include="shared_ptr_optional.cpp">
       <Filter>TestCode</Filter>
     </ClCompile>
+    <ClCompile Include="share_ptr.cpp">
+      <Filter>TestCode</Filter>
+    </ClCompile>
+    <ClCompile Include="shared_ptr_reinterpret_cast.cpp">
+      <Filter>TestCode</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="GameServer.h">
