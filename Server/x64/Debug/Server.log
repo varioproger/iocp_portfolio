@@ -1,7 +1,0 @@
-﻿  Conn.cpp
-  ConnMap.cpp
-  GameServer.cpp
-  코드를 생성하고 있습니다...
-  main.cpp
-D:\iocp_portfolio\Server\main.cpp(82,56): warning C4244: '인수': 'ULONG_PTR'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-  Server.vcxproj -> D:\iocp_portfolio\x64\Debug\Server.exe
