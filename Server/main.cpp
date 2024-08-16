@@ -58,7 +58,7 @@ int main()
 
 	size_t CPU = GS.GetThreadCount();
 	GS.CreateIOPort();
-	GS.BeginThread< PacketProcess>(CPU, PProcess);
+	GS.BeginThread<PacketProcess>(CPU, PProcess);
 
 	SOCKET client_sock;
 	SOCKADDR_IN clientaddr;
@@ -80,8 +80,7 @@ int main()
 
 		// Conn Map에 추가
 		auto client_conn = ConnMap::getInstance()->Insert(client_sock);
-		client_conn->m_WSARecv();
-		//Rev 진행 GS.CompleteRecv();
+		client_conn->StartRecv();
 	}
 	GS.JoinThread();
 	return 0;

@@ -60,7 +60,7 @@
     <ClCompile Include="SRWLockGuard.cpp">
       <Filter>Lock</Filter>
     </ClCompile>
-    <ClCompile Include="..\Global\shared_ptr_optional.cpp">
+    <ClCompile Include="shared_ptr_optional.cpp">
       <Filter>TestCode</Filter>
     </ClCompile>
   </ItemGroup>
@@ -94,6 +94,9 @@
     </ClInclude>
     <ClInclude Include="SRWLockGuard.h">
       <Filter>Lock</Filter>
+    </ClInclude>
+    <ClInclude Include="ServerGlobalDef.h">
+      <Filter>소스 파일</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

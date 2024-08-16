@@ -21,22 +21,22 @@
     <ClInclude Include="pch.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
-    <ClInclude Include="CompletionPort.h">
+    <ClInclude Include="Error0.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
     <ClInclude Include="BaseTCP.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
-    <ClInclude Include="Error0.h">
+    <ClInclude Include="CompletionPort.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
-    <ClInclude Include="WSend.h">
+    <ClInclude Include="GlobalDef.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
     <ClInclude Include="WRecv.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
-    <ClInclude Include="GlobalDef.h">
+    <ClInclude Include="WSend.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
   </ItemGroup>

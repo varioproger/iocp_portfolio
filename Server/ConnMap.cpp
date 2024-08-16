@@ -9,10 +9,10 @@ std::shared_ptr<Conn>  ConnMap::Insert(SOCKET key)
 	return conn;
 }
 
-void ConnMap::Delete(SOCKET key)
+void ConnMap::Delete(Conn* conn)
 {
 	CSLockGuard lock(&m_lock);
-	m_conn.erase(m_conn.find(key));
+	m_conn.erase(m_conn.find(conn->GetSocket()));
 }
 
 std::optional<std::shared_ptr<Conn>>  ConnMap::Select(SOCKET key)

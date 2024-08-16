@@ -1,5 +1,6 @@
 #pragma once
 #include"BaseTCP.h"
+#include"GlobalDef.h"
 #include<vector>
 #include<thread>
 
@@ -17,13 +18,13 @@ public:
 
 public:
 	template<typename T>
-	BOOL BeginThread(int MaxThread, std::vector<T> t)
+	BOOL BeginThread(size_t MaxThread, std::vector<T> t)
 	{
 		if (MaxThread > ThreadCount || t.size() != MaxThread)
 		{
 			return FALSE;
 		}
-		for (int i = 0; i < MaxThread; i++)
+		for (size_t i = 0; i < MaxThread; i++)
 		{
 			vThread.emplace_back(std::thread(&CompletionPort::WorkerThread, this, &t[i]));
 		}
@@ -31,8 +32,8 @@ public:
 	}
 public:
 	virtual void WorkerThread(LPVOID arg) = 0;
-	virtual int CompleteSend(LPVOID conn, int Bytes) = 0;
-	virtual int CompleteRecv(LPVOID conn, int Bytes) = 0;
+	virtual ECSocketResult CompleteSend(LPVOID conn, int Bytes) = 0;
+	virtual ECSocketResult CompleteRecv(LPVOID conn, int Bytes) = 0;
 	virtual void CloseCon(LPVOID conn) = 0;
 protected:
 	int ThreadCount;

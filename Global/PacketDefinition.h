@@ -2,6 +2,7 @@
 
 struct BaseMsg {
 	unsigned short Size;
-	unsigned short Type;
+	unsigned __int64 Type;
 	unsigned int Tick;
 };
+constexpr int SizeBaseMsg = sizeof(BaseMsg);
