@@ -78,6 +78,7 @@ int main()
 		}
 		auto client_conn = ConnMap::getInstance()->Insert(client_sock);
 		// 포인터가 다른 포인터 형식으로 변환될 수 있도록 합니다. 또한 정수 계열 형식이 포인터 형식으로 변환될 수 있도록 하고 그 반대로도 변환될 수 있도록 합니다.
+		// shared_ptr을 reinterpret_cast 로 캐스팅이 안됨. 그렇다고 get으로 하면 use_count가 안오름. 그럼 shared_ptr 사용하는 의미가 없어짐.
 		GS.Register(client_sock, reinterpret_cast<ULONG_PTR>(client_conn));
 
 		client_conn->StartRecv();

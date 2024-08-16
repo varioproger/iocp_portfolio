@@ -1,6 +1,15 @@
 #include "ConnMap.h"
 #include"CSLockGuard.h"
 
+ConnMap::~ConnMap()
+{
+	for (auto it = m_conn.begin(); it != m_conn.end(); it++)
+	{
+		delete it->second;
+	}
+	m_conn.clear();
+}
+
 Conn* ConnMap::Insert(SOCKET key)
 {
 	CSLockGuard lock(&m_lock);
