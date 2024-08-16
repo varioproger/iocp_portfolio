@@ -6,26 +6,22 @@
 Conn::Conn(SOCKET sock) : m_sock(sock)
 {
 	m_recv_overlapped.m_type = ECIoType::IO_RECV;
-	m_recv_overlapped.m_buf = new char(KB_1);
-	memset(m_recv_overlapped.m_buf, 0, sizeof(KB_1));
-	m_packet_recv_size = 0;
-	m_recv_bytes = 0;
+	m_recv_overlapped.m_buf = new char[KB_4];
+	ClearRecv();
 
 	m_send_overlapped.m_type = ECIoType::IO_SEND;
-	m_send_overlapped.m_buf = new char(KB_1);
-	memset(m_send_overlapped.m_buf, 0, sizeof(KB_1));
-	m_packet_send_size = 0;
-	m_send_bytes = 0;
+	m_send_overlapped.m_buf = new char[KB_1];
+	ClearSend();
 }
 
 Conn::~Conn()
 {
 	delete m_recv_overlapped.m_buf;
-	m_packet_recv_size = 0;
+	m_recv_packet_size = 0;
 	m_recv_bytes = 0;
 
 	delete m_send_overlapped.m_buf;
-	m_packet_send_size = 0;
+	m_send_packet_size = 0;
 	m_send_bytes = 0;
 }
 
@@ -42,11 +38,91 @@ SOCKET Conn::GetSocket()
 	return m_sock;
 }
 
+int Conn::GetRecvPacketSize()
+{
+	return m_recv_packet_size;
+}
+
+void Conn::SetRecvPacketSize(int size)
+{
+	m_recv_packet_size = size;
+}
+
+void Conn::ResetRecvPacketSize()
+{
+	m_recv_packet_size = 0;
+}
+
+int Conn::GetRecvBytes()
+{
+	return m_recv_bytes;
+}
+
+void Conn::AddRecvBytes(int bytes)
+{
+	m_recv_bytes += bytes;
+}
+
+void Conn::ResetRecvBytes()
+{
+	m_recv_bytes = 0;
+}
+
+char* Conn::GetRecvBuf()
+{
+	return m_recv_overlapped.m_buf;
+}
+
+void Conn::ResetRecvBuf()
+{
+	memset(m_recv_overlapped.m_buf, 0, KB_1);
+}
+
+int Conn::GetSendPacketSize()
+{
+	return m_send_packet_size;
+}
+
+void Conn::SetSendPacketSize(int size)
+{
+	m_send_packet_size = size;
+}
+
+void Conn::ResetSendPacketSize()
+{
+	m_send_packet_size = 0;
+}
+
+int Conn::GetSendBytes()
+{
+	return m_send_bytes;
+}
+
+void Conn::AddSendBytes(int bytes)
+{
+	m_send_bytes += bytes;
+}
+
+void Conn::ResetSendBytes()
+{
+	m_send_bytes = 0;
+}
+
+char* Conn::GetSendBuf()
+{
+	return m_send_overlapped.m_buf;
+}
+
+void Conn::ResetSendBuf()
+{
+	memset(m_send_overlapped.m_buf, 0, KB_1);
+}
+
 BOOL Conn::StartRecv()
 {
 	SRWLockExGuard lock(&m_recv_lock);
 	int len = 0;
-	memset(m_recv_overlapped.m_buf, 0, KB_4);
+	ClearRecv();
 
 	if (m_recv_bytes < SizeBaseMsg) //맨 앞에 패킷 사이즈 만큼 못 읽었거나 int 값 한개 이거나
 	{
@@ -54,7 +130,7 @@ BOOL Conn::StartRecv()
 	}
 	else  // 사이즈 패킷 다 읽고 그 뒤에 패킷 데이터를 읽고 있는것
 	{
-		len = m_packet_recv_size - m_recv_bytes;
+		len = m_recv_packet_size - m_recv_bytes;
 	}
 	return Recv(m_recv_overlapped.m_buf + m_recv_bytes, len);
 }
@@ -62,9 +138,16 @@ BOOL Conn::StartRecv()
 BOOL Conn::StartSend(char* buf, int size)
 {
 	SRWLockExGuard lock(&m_send_lock);
+	ClearSend();
+	
 	memcpy(m_send_overlapped.m_buf, buf, size);
-	m_packet_send_size = size;
-	return Send(m_send_overlapped.m_buf + m_send_bytes, m_packet_send_size - m_send_bytes);
+	m_send_packet_size = size;
+	return Send(m_send_overlapped.m_buf + m_send_bytes, m_send_packet_size - m_send_bytes);
+}
+
+BOOL Conn::SendLeft()
+{
+	return Send(m_send_overlapped.m_buf + m_send_bytes, m_send_packet_size - m_send_bytes);
 }
 
 BOOL Conn::Recv(char* buf, int len)
@@ -117,4 +200,18 @@ BOOL Conn::Send(char* buf, int len)
 		}
 	}
 	return TRUE;
+}
+
+void Conn::ClearRecv()
+{
+	memset(m_recv_overlapped.m_buf, 0, KB_4);
+	m_recv_packet_size = 0;
+	m_recv_bytes = 0;
+}
+
+void Conn::ClearSend()
+{
+	memset(m_send_overlapped.m_buf, 0, KB_1);
+	m_send_packet_size = 0;
+	m_send_bytes = 0;
 }

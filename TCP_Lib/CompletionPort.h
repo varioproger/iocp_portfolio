@@ -10,7 +10,7 @@ public:
 	CompletionPort();
 	~CompletionPort();
 	BOOL CreateIOPort();
-	BOOL Register(SOCKET sock, int key);
+	BOOL Register(SOCKET sock, ULONG_PTR key);
 	void CalculateThreadCount();
 	size_t GetThreadCount();
 	void PostStopSignal(u_int key = 1);

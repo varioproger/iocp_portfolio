@@ -16,44 +16,48 @@ public:
 	SRWLock& GetRecvLock();
 	SRWLock& GetSendLock();
 	SOCKET GetSocket();
-	//int GetPacketRecvSize();
-	//void SetPacketRecvSize();
-	//void ResetPacketRecvSize();
 
-	//int GetRecvBytes();
-	//void SetRecvBytes();
-	//void ResetRecvBytes();
+	int GetRecvPacketSize();
+	void SetRecvPacketSize(int size);
+	void ResetRecvPacketSize();
 
-	//char* GetRecvBuf();
-	//void SetRecvBuf();
-	//void ResetRecvBuf();
+	int GetRecvBytes();
+	void AddRecvBytes(int bytes);
+	void ResetRecvBytes();
 
-	//int GetPacketSendBytes();
-	//void SetPacketSendBytes();
-	//void ResetPacketSendBytes();
+	char* GetRecvBuf();
+	void ResetRecvBuf();
 
-	//int GetSendBytes();
-	//void SetSendBytes();
-	//void ResetSendBytes();
+	int GetSendPacketSize();
+	void SetSendPacketSize(int size);
+	void ResetSendPacketSize();
 
-	//int GetSendvBuf();
-	//void SetSendvBuf();
-	//void ResetSendvBuf();
+	int GetSendBytes();
+	void AddSendBytes(int bytes);
+	void ResetSendBytes();
+
+	char* GetSendBuf();
+	void ResetSendBuf();
+
+public:
 	BOOL StartRecv();
 	BOOL StartSend(char* buf, int size);
+	BOOL SendLeft();
 private:
 	BOOL Recv(char* buf, int len);
 	BOOL Send(char* buf, int len);
+	void ClearRecv();
+	void ClearSend();
 private:
 	SOCKET m_sock;
 	SRWLock m_recv_lock;
 	SRWLock m_send_lock;
 private:
 
-	int m_packet_recv_size;
+	int m_recv_packet_size;
 	int m_recv_bytes;
 	
-	int m_packet_send_size;
+	int m_send_packet_size;
 	int m_send_bytes;
 };
 

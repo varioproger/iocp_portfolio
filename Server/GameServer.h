@@ -8,7 +8,7 @@ public:
 	GameServer();
 	virtual ~GameServer();
 	virtual void WorkerThread(LPVOID arg) override;
-	virtual ECSocketResult CompleteSend(LPVOID conn, int Bytes) override;
-	virtual ECSocketResult CompleteRecv(LPVOID conn, int Bytes) override;
+	virtual ECSocketResult CompleteSend(LPVOID conn, int bytes) override;
+	virtual ECSocketResult CompleteRecv(LPVOID conn, int bytes) override;
 	virtual void CloseCon(LPVOID conn) override;
 };

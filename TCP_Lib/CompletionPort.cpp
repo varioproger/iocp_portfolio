@@ -29,7 +29,7 @@ BOOL CompletionPort::CreateIOPort()
 	return TRUE;
 }
 
-BOOL CompletionPort::Register(SOCKET sock, int key)
+BOOL CompletionPort::Register(SOCKET sock, ULONG_PTR key)
 {
 	CreateIoCompletionPort((HANDLE)sock, hCP, key, 0);
 	return TRUE;
