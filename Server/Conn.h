@@ -5,10 +5,10 @@
 class Conn
 {
 public:
-	Conn();
+	Conn(SOCKET sock);
 	~Conn();
 public:
-	int m_index;
+	SOCKET m_sock;
 	WRecv m_WSARecv;//WSARecv 를 래핑한 클래스
 	WSend m_WSASend;//WSASend 를 래핑한 클래스
 };

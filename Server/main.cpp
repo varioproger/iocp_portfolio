@@ -79,8 +79,9 @@ int main()
 		GS.Register(client_sock, REGISTER_KEY);
 
 		// Conn Map에 추가
-		ConnMap::getInstance()->Create(client_sock);
-		// Rev 진행 GS.CompleteRecv();
+		auto client_conn = ConnMap::getInstance()->Insert(client_sock);
+		client_conn->m_WSARecv();
+		//Rev 진행 GS.CompleteRecv();
 	}
 	GS.JoinThread();
 	return 0;

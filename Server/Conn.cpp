@@ -1,8 +1,8 @@
 #include "Conn.h"
 
-Conn::Conn()
+Conn::Conn(SOCKET sock) : m_sock(sock)
 {
-	m_index = 0;
+
 }
 
 Conn::~Conn()

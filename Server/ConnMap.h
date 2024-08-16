@@ -1,20 +1,23 @@
 #pragma once
 #include"Singleton.h"
+#include"CriticalSection.h"
 #include"Conn.h"
 #include<memory>
 #include<map>
-#include<mutex>
+#include <optional>
 
 class ConnMap : public Singleton<ConnMap>
 {
 public:
-	std::shared_ptr<Conn> Create(SOCKET sock);
-	void Insert(SOCKET sock);
-	void Delete(SOCKET sock);
-	std::shared_ptr<Conn> Select();
+	std::shared_ptr<Conn>  Insert(SOCKET key);
+	void Delete(SOCKET key);
+
+	// 객체 접근 .value()
+	// 실제로 값을 가지고 있는지 확인 .has_value()
+	std::optional<std::shared_ptr<Conn>> Select(SOCKET key);
 
 private:
-	std::map<int, std::shared_ptr<Conn>> m_conn;
-	std::mutex m_lock;
+	std::map<SOCKET, std::shared_ptr<Conn>> m_conn;
+	CriticalSection m_lock;
 };
 

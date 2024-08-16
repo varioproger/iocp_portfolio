@@ -14,7 +14,7 @@ BOOL WRecv::Recv()
 {
 	if (Buf == nullptr || Sock == NULL || Over.ptr == nullptr)
 	{
-		return -1;
+		return FALSE;
 	}
 	int len = 0;
 	memset(Buf, 0, strlen(Buf));

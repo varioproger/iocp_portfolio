@@ -22,6 +22,9 @@
     <Filter Include="DesignPattern">
       <UniqueIdentifier>{b3f8b41e-f4f4-484a-9df4-8db7f70591a7}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Lock">
+      <UniqueIdentifier>{188362a5-7da4-426b-8c56-c440f243c690}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -45,6 +48,21 @@
     <ClCompile Include="Template_Singleton.cpp">
       <Filter>TestCode</Filter>
     </ClCompile>
+    <ClCompile Include="CSLockGuard.cpp">
+      <Filter>Lock</Filter>
+    </ClCompile>
+    <ClCompile Include="CriticalSection.cpp">
+      <Filter>Lock</Filter>
+    </ClCompile>
+    <ClCompile Include="SRWLock.cpp">
+      <Filter>Lock</Filter>
+    </ClCompile>
+    <ClCompile Include="SRWLockGuard.cpp">
+      <Filter>Lock</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Global\shared_ptr_optional.cpp">
+      <Filter>TestCode</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="GameServer.h">
@@ -61,6 +79,21 @@
     </ClInclude>
     <ClInclude Include="ConnMap.h">
       <Filter>WorkingTable</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Global\PacketDefinition.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="CriticalSection.h">
+      <Filter>Lock</Filter>
+    </ClInclude>
+    <ClInclude Include="CSLockGuard.h">
+      <Filter>Lock</Filter>
+    </ClInclude>
+    <ClInclude Include="SRWLock.h">
+      <Filter>Lock</Filter>
+    </ClInclude>
+    <ClInclude Include="SRWLockGuard.h">
+      <Filter>Lock</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
