@@ -1,5 +1,5 @@
 #pragma once
-#include"Item.h"
+#include"Equip.h"
 #include<list>
 #include<memory>
 
@@ -10,6 +10,6 @@ public:
 	~Equipment();
 
 private:
-	std::list<std::shared_ptr<Item>> m_litem;
+	std::list<std::shared_ptr<Equip>> m_litem;
 };
 

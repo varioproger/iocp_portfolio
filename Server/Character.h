@@ -8,8 +8,8 @@ public:
 	Character();
 	~Character();
 private:
-	Inven m_inven;
-	Equipment m_equip;
+	Inven m_inven; // 인벤
+	Equipment m_equip; // 장비 장착
 private:
 	SRWLock m_lock;
 };
