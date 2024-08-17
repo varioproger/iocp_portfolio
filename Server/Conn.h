@@ -1,8 +1,10 @@
 #pragma once
 #include<GlobalDef.h>
+#include"../Global/PacketDefinition.h"
 #include"ServerGlobalDef.h"
-#include"SRWLock.h"
 #include<mutex>
+#include<concurrent_queue.h>
+#include<optional>
 
 class Conn
 {
@@ -13,9 +15,8 @@ public:
 	Conn(SOCKET sock);
 	~Conn();
 public:
-	SRWLock& GetRecvLock();
-	SRWLock& GetSendLock();
-	std::mutex& GetActionLock();
+	std::mutex& GetRecvLock();
+	std::mutex& GetSendLock();
 	SOCKET GetSocket();
 
 	int GetRecvPacketSize();
@@ -42,7 +43,8 @@ public:
 
 public:
 	BOOL StartRecv();
-	BOOL StartSend(char* buf, int size);
+	BOOL AddSend(BaseMsg* packet);
+	BOOL PopSend();
 	BOOL SendLeft();
 private:
 	BOOL Recv(char* buf, int len);
@@ -51,9 +53,8 @@ private:
 	void ClearSend();
 private:
 	SOCKET m_sock;
-	SRWLock m_recv_lock;
-	SRWLock m_send_lock;
-	std::mutex m_action_lock;
+	std::mutex m_recv_lock;
+	std::mutex m_send_lock;
 private:
 
 	int m_recv_packet_size;
@@ -61,5 +62,6 @@ private:
 	
 	int m_send_packet_size;
 	int m_send_bytes;
+	concurrency::concurrent_queue<BaseMsg*> m_send_queue;
 };
 

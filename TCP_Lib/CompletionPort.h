@@ -26,7 +26,7 @@ public:
 		}
 		for (size_t i = 0; i < MaxThread; i++)
 		{
-			int v_idx = i % t.size();
+			size_t v_idx = i % t.size();
 			if (std::is_pointer<T>() == TRUE)
 			{
 				vThread.emplace_back(std::thread(&CompletionPort::WorkerThread, this, t[v_idx]));

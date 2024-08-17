@@ -78,6 +78,9 @@
     <ClCompile Include="mod.cpp">
       <Filter>TestCode</Filter>
     </ClCompile>
+    <ClCompile Include="packet_ptr.cpp">
+      <Filter>TestCode</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="GameServer.h">

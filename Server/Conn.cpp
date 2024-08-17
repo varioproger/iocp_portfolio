@@ -1,7 +1,6 @@
 #include "Conn.h"
 #include"ServerGlobalDef.h"
 #include"SRWLockGuard.h"
-#include"../Global/PacketDefinition.h"
 
 Conn::Conn(SOCKET sock) : m_sock(sock)
 {
@@ -25,17 +24,13 @@ Conn::~Conn()
 	m_send_bytes = 0;
 }
 
-SRWLock& Conn::GetRecvLock()
+std::mutex& Conn::GetRecvLock()
 {
 	return m_recv_lock;
 }
-SRWLock& Conn::GetSendLock()
+std::mutex& Conn::GetSendLock()
 {
 	return m_send_lock;
-}
-std::mutex& Conn::GetActionLock()
-{
-	return m_action_lock;
 }
 SOCKET Conn::GetSocket()
 {
@@ -124,7 +119,7 @@ void Conn::ResetSendBuf()
 
 BOOL Conn::StartRecv()
 {
-	SRWLockExGuard lock(&m_recv_lock);
+	std::lock_guard<std::mutex> lock(m_recv_lock);
 	int len = 0;
 	if (m_recv_packet_size == m_recv_bytes)
 	{
@@ -141,14 +136,35 @@ BOOL Conn::StartRecv()
 	return Recv(m_recv_overlapped.m_buf + m_recv_bytes, len);
 }
 
-BOOL Conn::StartSend(char* buf, int size)
+
+BOOL Conn::AddSend(BaseMsg* packet)
 {
-	SRWLockExGuard lock(&m_send_lock);
+	std::lock_guard<std::mutex> lock(m_send_lock);
+	if (m_send_queue.empty() == true)// 현재 비어있음.
+	{
+		memcpy(m_send_overlapped.m_buf, (char*)packet, packet->Size);
+		m_send_packet_size = packet->Size;
+		return Send(m_send_overlapped.m_buf + m_send_bytes, m_send_packet_size - m_send_bytes);
+	}
+	else // 처리해야하는 패킷이 사전에 있음
+	{
+		m_send_queue.push(packet);
+		return TRUE;
+	}
+}
+
+BOOL Conn::PopSend()
+{
+	BaseMsg* msg = nullptr;
 	ClearSend();
-	
-	memcpy(m_send_overlapped.m_buf, buf, size);
-	m_send_packet_size = size;
-	return Send(m_send_overlapped.m_buf + m_send_bytes, m_send_packet_size - m_send_bytes);
+	if (m_send_queue.try_pop(msg))
+	{
+		std::lock_guard<std::mutex> lock(m_send_lock);
+		memcpy(m_send_overlapped.m_buf, (char*)msg, msg->Size);
+		m_send_packet_size = msg->Size;
+		return Send(m_send_overlapped.m_buf + m_send_bytes, m_send_packet_size - m_send_bytes);
+	}
+	return TRUE;
 }
 
 BOOL Conn::SendLeft()
@@ -185,8 +201,6 @@ BOOL Conn::Recv(char* buf, int len)
 
 BOOL Conn::Send(char* buf, int len)
 {
-	DWORD recvbyte;
-	DWORD flag = 0;
 	/*
 	WSASend시에 생성키, 전송 바이트 수, 에러 코드 , OVERLAPPED 구조체 포인터를 하나의 엔트리로 만들어 입출력 완료 큐(I/O Completion Queue)에 엔큐한다
 

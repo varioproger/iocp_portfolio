@@ -1,7 +1,6 @@
+#include"../Global/PacketDefinition.h"
 #include "GameServer.h"
 #include"ConnMap.h"
-#include"../Global/PacketDefinition.h"
-#include"SRWLockGuard.h"
 #include"PacketProcess.h"
 #include<iostream>
 GameServer::GameServer()
@@ -60,22 +59,39 @@ void GameServer::WorkerThread(LPVOID arg)
 			ECSocketResult ret = CompleteRecv(Conn, cbTransferrd);
 			if (ret == ECSocketResult::FINISHED)
 			{
-				packet->ProcessPacket(Conn);
+				if (packet->ProcessPacket(Conn) == FALSE)
+				{
+					printf("Recv Eror\n");
+					CloseCon(Conn);
+					continue;
+				}
 			}
 			else if (ret == ECSocketResult::SOC_ERROR)
 			{
 				printf("Recv Eror\n");
 				CloseCon(Conn);
+				continue;
 			}
 		}
 		break;
 		case ECIoType::IO_SEND:
-			if (CompleteSend(Conn, cbTransferrd) == ECSocketResult::SOC_ERROR)
+		{
+			ECSocketResult ret = CompleteSend(Conn, cbTransferrd);
+			if (ret == ECSocketResult::FINISHED)
+			{
+				if (Conn->PopSend() == FALSE) // Send가 완료되면 추가로 더 Send 할게 있는지 확인한 이후에 있으면 Send 다시 진행
+				{
+					printf("Send Eror\n");
+					CloseCon(Conn);
+				}
+			}
+			else if (ret == ECSocketResult::SOC_ERROR)
 			{
 				printf("Send Eror\n");
 				CloseCon(Conn);
 			}
 			continue;
+		}
 		default:
 			break;
 		}
@@ -87,7 +103,7 @@ void GameServer::WorkerThread(LPVOID arg)
 ECSocketResult GameServer::CompleteSend(LPVOID conn, int bytes)
 {
 	Conn* ptr = (Conn*)conn;
-	SRWLockExGuard lock(&ptr->GetSendLock());
+	std::lock_guard lock(ptr->GetSendLock());
 	int add_bytes = ptr->GetSendBytes() + bytes;
 	int packet_size = ptr->GetSendPacketSize();
 	ptr->AddSendBytes(bytes);
@@ -113,7 +129,7 @@ ECSocketResult GameServer::CompleteSend(LPVOID conn, int bytes)
 ECSocketResult GameServer::CompleteRecv(LPVOID conn, int bytes)
 {
 	Conn* ptr = (Conn*)conn;
-	SRWLockExGuard lock(&ptr->GetRecvLock());
+	std::lock_guard lock(ptr->GetRecvLock());
 	int add_bytes = ptr->GetRecvBytes() + bytes;
 	int packet_size = ptr->GetRecvPacketSize();
 	ptr->AddRecvBytes(bytes);

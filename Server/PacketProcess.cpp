@@ -34,6 +34,12 @@ BOOL PacketProcess::ProcessSignal(char* packet, Conn* ptr)
 	m_process_lock.unlock();
 
 	std::cout << msg->msg << std::endl;
-	ptr->StartSend((char*)msg, msg->Size);
-	return FALSE;
+
+	SignalMsg sm;
+	memset(&sm, 0, sizeof(SignalMsg));
+	sm.Type = PacketType::PT_Signal;
+	sm.Size = sizeof(SignalMsg);
+	strncpy_s(sm.msg, MaxMsgSize, "From Server", MaxMsgSize);
+	ptr->AddSend((BaseMsg*)&sm);
+	return TRUE;
 }
