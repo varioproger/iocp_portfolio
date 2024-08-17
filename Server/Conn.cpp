@@ -176,6 +176,7 @@ BOOL Conn::Recv(char* buf, int len)
 	{
 		if (WSAGetLastError() != WSA_IO_PENDING)
 		{
+			ClearRecv();
 			return FALSE;
 		}
 	}
@@ -187,24 +188,27 @@ BOOL Conn::Send(char* buf, int len)
 	DWORD recvbyte;
 	DWORD flag = 0;
 	/*
-	WSARecv시에 생성키, 전송 바이트 수, 에러 코드 , OVERLAPPED 구조체 포인터를 하나의 엔트리로 만들어 입출력 완료 큐(I/O Completion Queue)에 엔큐한다
+	WSASend시에 생성키, 전송 바이트 수, 에러 코드 , OVERLAPPED 구조체 포인터를 하나의 엔트리로 만들어 입출력 완료 큐(I/O Completion Queue)에 엔큐한다
 
 	OVERLAPPED 구조체에 해당 정보를 담아서 엔큐 하기 때문에 그전에 객체를 미리 비워 놓는것이다.
 	꼭 그래야 하는건 아니지만 더 안전하기 때문이다
 	*/
+	DWORD sendbyte;
+
 	memset(&m_send_overlapped.m_overlapped, 0, sizeof(WSAOVERLAPPED));
 
 	m_send_overlapped.m_wbuf.buf = buf;
 	m_send_overlapped.m_wbuf.len = len;
-
-	int retval = WSARecv(m_sock, &m_send_overlapped.m_wbuf, 1, &recvbyte, &flag, &m_send_overlapped.m_overlapped, nullptr);
+	int retval = WSASend(m_sock, &m_send_overlapped.m_wbuf, 1, &sendbyte, 0, &m_send_overlapped.m_overlapped, nullptr);
 	if (retval == SOCKET_ERROR)
 	{
 		if (WSAGetLastError() != WSA_IO_PENDING)
 		{
+			ClearSend();
 			return FALSE;
 		}
 	}
+
 	return TRUE;
 }
 

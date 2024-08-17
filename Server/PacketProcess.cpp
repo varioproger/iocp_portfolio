@@ -34,5 +34,6 @@ BOOL PacketProcess::ProcessSignal(char* packet, Conn* ptr)
 	m_process_lock.unlock();
 
 	std::cout << msg->msg << std::endl;
+	ptr->StartSend((char*)msg, msg->Size);
 	return FALSE;
 }
