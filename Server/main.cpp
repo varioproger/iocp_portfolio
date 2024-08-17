@@ -49,16 +49,23 @@ BOOL CtrlHandler(DWORD fdwCtrlType)
 int main()
 {
 	SetConsoleCtrlHandler((PHANDLER_ROUTINE)CtrlHandler, TRUE);
-	std::vector< PacketProcess> PProcess;
-	PProcess.clear();
-	PProcess.emplace_back();
 
 	START_SERVER(GameServer, GS);
 	SOCKET sock = SET_SERVER(GS, sock);
 
 	size_t CPU = GS.GetThreadCount();
 	GS.CreateIOPort();
-	GS.BeginThread<PacketProcess>(CPU, PProcess);
+
+	std::vector<PacketProcessBase*> PProcess;
+	PProcess.clear();
+	for (int i = 0; i < 1; i++)
+	{
+		PProcess.push_back((PacketProcessBase*)new PacketProcess());
+	}
+	if (GS.BeginThread<PacketProcessBase*>(2, PProcess) == FALSE)
+	{
+		printf("Begin Thread Failed\n");
+	}
 
 	SOCKET client_sock;
 	SOCKADDR_IN clientaddr;
@@ -69,9 +76,9 @@ int main()
 	while (1)
 	{
 		client_sock = GS.Accept(sock, clientaddr, addrlen);
+		inet_ntop(AF_INET, &(clientaddr.sin_addr), str, INET_ADDRSTRLEN);
 		if (client_sock == INVALID_SOCKET)
 		{
-			inet_ntop(AF_INET, &(clientaddr.sin_addr), str, INET_ADDRSTRLEN);
 			printf("\n[TCP 서버] 클라이언트 접속 에러: IP 주소=%s, 포트 번호=%d\n",	str, ntohs(clientaddr.sin_port));
 			memset(str, 0, sizeof(str));
 			continue;
@@ -82,7 +89,8 @@ int main()
 		GS.Register(client_sock, reinterpret_cast<ULONG_PTR>(client_conn));
 
 		client_conn->StartRecv();
-
+		printf("\n[TCP 서버] 클라이언트 접속 성공: IP 주소=%s, 포트 번호=%d\n", str, ntohs(clientaddr.sin_port));
+		memset(str, 0, sizeof(str));
 	}
 	GS.JoinThread();
 	return 0;

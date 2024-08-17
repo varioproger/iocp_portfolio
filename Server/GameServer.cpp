@@ -2,6 +2,8 @@
 #include"ConnMap.h"
 #include"../Global/PacketDefinition.h"
 #include"SRWLockGuard.h"
+#include"PacketProcess.h"
+#include<iostream>
 GameServer::GameServer()
 {
 }
@@ -12,7 +14,7 @@ GameServer::~GameServer()
 
 void GameServer::WorkerThread(LPVOID arg)
 {
-	//EventManager* Event = (EventManager*)arg;
+	PacketProcessBase* packet = (PacketProcessBase*)arg;
 	int retval = 0;
 	while (1)
 	{
@@ -49,7 +51,6 @@ void GameServer::WorkerThread(LPVOID arg)
 				WSAGetOverlappedResult(Conn->GetSocket(), &overlapped->m_overlapped, &lpcbTransfer, false, &lpdwFlags);
 			}
 			CloseCon(Conn);
-			//Event->ConEnd((Conn*)overlapped->ptr);
 			continue;
 		}
 		switch (overlapped->m_type)
@@ -59,7 +60,7 @@ void GameServer::WorkerThread(LPVOID arg)
 			ECSocketResult ret = CompleteRecv(Conn, cbTransferrd);
 			if (ret == ECSocketResult::FINISHED)
 			{
-				//Event->AnalyzeProtocol(conn);
+				packet->ProcessPacket(Conn);
 			}
 			else if (ret == ECSocketResult::SOC_ERROR)
 			{
@@ -122,14 +123,19 @@ ECSocketResult GameServer::CompleteRecv(LPVOID conn, int bytes)
 		BaseMsg* msg = (BaseMsg*)ptr->GetRecvBuf();
 		ptr->SetRecvPacketSize(msg->Size);
 	}
-	if (add_bytes == packet_size)
+	else if (add_bytes == packet_size)
 	{
 		return ECSocketResult::FINISHED;
+	}
+	else if (add_bytes > packet_size)
+	{
+		ECSocketResult::SOC_ERROR;
 	}
 	return ECSocketResult::UNFINISHED;
 }
 
 void GameServer::CloseCon(LPVOID conn)
 {
+	std::cout << "À¯Àú Á¢¼Ó ²÷±è" << std::endl;
 	ConnMap::getInstance()->Delete((Conn*)conn);
 }

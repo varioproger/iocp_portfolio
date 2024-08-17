@@ -1,10 +1,34 @@
 #pragma once
+#include"../Global/PacketDefinition.h"
+#include"Conn.h"
+#include<Windows.h>
+#include<mutex>
 
-class PacketProcess
+class PacketProcessBase {
+public:
+	PacketProcessBase()
+	{
+
+	}
+	~PacketProcessBase()
+	{
+
+	}
+	virtual BOOL ProcessPacket(Conn* ptr) = 0;
+private:
+	virtual BOOL ProcessSignal(char* packet, Conn* ptr) = 0;
+};
+
+class PacketProcess : public PacketProcessBase
 {
 public:
 	PacketProcess();
-	~PacketProcess();
-	void ProcessSocket();
-	int UnPackPacket();
+	virtual ~PacketProcess();
+	virtual BOOL ProcessPacket(Conn* ptr) override;
+private:
+	virtual BOOL ProcessSignal(char* packet, Conn* ptr) override;
+private:
+	std::mutex m_process_lock;
+	std::mutex m_signal_lock;
 };
+

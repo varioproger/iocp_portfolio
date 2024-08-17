@@ -33,6 +33,10 @@ SRWLock& Conn::GetSendLock()
 {
 	return m_send_lock;
 }
+std::mutex& Conn::GetActionLock()
+{
+	return m_action_lock;
+}
 SOCKET Conn::GetSocket()
 {
 	return m_sock;
@@ -122,8 +126,10 @@ BOOL Conn::StartRecv()
 {
 	SRWLockExGuard lock(&m_recv_lock);
 	int len = 0;
-	ClearRecv();
-
+	if (m_recv_packet_size == m_recv_bytes)
+	{
+		ClearRecv();
+	}
 	if (m_recv_bytes < SizeBaseMsg) //맨 앞에 패킷 사이즈 만큼 못 읽었거나 int 값 한개 이거나
 	{
 		len = SizeBaseMsg - m_recv_bytes;

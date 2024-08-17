@@ -69,6 +69,15 @@
     <ClCompile Include="shared_ptr_reinterpret_cast.cpp">
       <Filter>TestCode</Filter>
     </ClCompile>
+    <ClCompile Include="MultiThreadSingleMethod.cpp">
+      <Filter>TestCode</Filter>
+    </ClCompile>
+    <ClCompile Include="mutext_vector.cpp">
+      <Filter>TestCode</Filter>
+    </ClCompile>
+    <ClCompile Include="mod.cpp">
+      <Filter>TestCode</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="GameServer.h">

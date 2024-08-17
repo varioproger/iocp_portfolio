@@ -2,7 +2,7 @@
 #include<GlobalDef.h>
 #include"ServerGlobalDef.h"
 #include"SRWLock.h"
-
+#include<mutex>
 
 class Conn
 {
@@ -15,6 +15,7 @@ public:
 public:
 	SRWLock& GetRecvLock();
 	SRWLock& GetSendLock();
+	std::mutex& GetActionLock();
 	SOCKET GetSocket();
 
 	int GetRecvPacketSize();
@@ -52,6 +53,7 @@ private:
 	SOCKET m_sock;
 	SRWLock m_recv_lock;
 	SRWLock m_send_lock;
+	std::mutex m_action_lock;
 private:
 
 	int m_recv_packet_size;

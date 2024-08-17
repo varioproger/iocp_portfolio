@@ -3,7 +3,7 @@
 #include"GlobalDef.h"
 #include<vector>
 #include<thread>
-
+#include<type_traits>
 class CompletionPort : public BaseTCP
 {
 public:
@@ -20,13 +20,22 @@ public:
 	template<typename T>
 	BOOL BeginThread(size_t MaxThread, std::vector<T> t)
 	{
-		if (MaxThread > ThreadCount || t.size() != MaxThread)
+		if (MaxThread > ThreadCount || t.size() > MaxThread)
 		{
 			return FALSE;
 		}
 		for (size_t i = 0; i < MaxThread; i++)
 		{
-			vThread.emplace_back(std::thread(&CompletionPort::WorkerThread, this, &t[i]));
+			int v_idx = i % t.size();
+			if (std::is_pointer<T>() == TRUE)
+			{
+				vThread.emplace_back(std::thread(&CompletionPort::WorkerThread, this, t[v_idx]));
+			}
+			else
+			{
+				vThread.emplace_back(std::thread(&CompletionPort::WorkerThread, this, &t[v_idx]));
+			}
+
 		}
 		return TRUE;
 	}
