@@ -53,9 +53,13 @@ int main()
 			break;
 		}
 		// 받은 데이터 출력
-		buf[retval] = '\0';
-		printf("[TCP 클라이언트] %d바이트를 받았습니다.\n", retval);
-		printf("[받은 데이터] %s\n", buf);
+		BaseMsg* msg = (BaseMsg*)buf;
+		if (msg->Type == PacketType::PT_Signal)
+		{
+			SignalMsg* signal = (SignalMsg*)msg;
+			printf("[TCP 클라이언트] %d바이트를 받았습니다.\n", retval);
+			printf("[받은 데이터] %s\n", signal->msg);
+		}	
 	}
 
 	// closesocket()
