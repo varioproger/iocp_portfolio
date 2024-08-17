@@ -50,19 +50,19 @@ int main()
 {
 	SetConsoleCtrlHandler((PHANDLER_ROUTINE)CtrlHandler, TRUE);
 
-	START_SERVER(GameServer, GS);
-	SOCKET sock = SET_SERVER(GS, sock);
+	START_SERVER(GameServer, gs);
+	SOCKET sock = SET_SERVER(gs, sock);
 
-	size_t CPU = GS.GetThreadCount();
-	GS.CreateIOPort();
+	size_t cpu_count = gs.GetThreadCount();
+	gs.CreateIOPort();
 
-	std::vector<PacketProcessBase*> PProcess;
-	PProcess.clear();
+	std::vector<PacketProcessBase*> vppbase;
+	vppbase.clear();
 	for (int i = 0; i < 1; i++)
 	{
-		PProcess.push_back((PacketProcessBase*)new PacketProcess());
+		vppbase.push_back((PacketProcessBase*)new PacketProcess());
 	}
-	if (GS.BeginThread<PacketProcessBase*>(2, PProcess) == FALSE)
+	if (gs.BeginThread<PacketProcessBase*>(2, vppbase) == FALSE)
 	{
 		printf("Begin Thread Failed\n");
 	}
@@ -75,7 +75,7 @@ int main()
 
 	while (1)
 	{
-		client_sock = GS.Accept(sock, clientaddr, addrlen);
+		client_sock = gs.Accept(sock, clientaddr, addrlen);
 		inet_ntop(AF_INET, &(clientaddr.sin_addr), str, INET_ADDRSTRLEN);
 		if (client_sock == INVALID_SOCKET)
 		{
@@ -86,12 +86,12 @@ int main()
 		auto client_conn = ConnMap::getInstance()->Insert(client_sock);
 		// 포인터가 다른 포인터 형식으로 변환될 수 있도록 합니다. 또한 정수 계열 형식이 포인터 형식으로 변환될 수 있도록 하고 그 반대로도 변환될 수 있도록 합니다.
 		// shared_ptr을 reinterpret_cast 로 캐스팅이 안됨. 그렇다고 get으로 하면 use_count가 안오름. 그럼 shared_ptr 사용하는 의미가 없어짐.
-		GS.Register(client_sock, reinterpret_cast<ULONG_PTR>(client_conn));
+		gs.Register(client_sock, reinterpret_cast<ULONG_PTR>(client_conn));
 
 		client_conn->StartRecv();
 		printf("\n[TCP 서버] 클라이언트 접속 성공: IP 주소=%s, 포트 번호=%d\n", str, ntohs(clientaddr.sin_port));
 		memset(str, 0, sizeof(str));
 	}
-	GS.JoinThread();
+	gs.JoinThread();
 	return 0;
 }

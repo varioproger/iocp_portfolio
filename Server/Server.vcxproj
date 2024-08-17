@@ -148,6 +148,8 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Character.cpp" />
+    <ClCompile Include="CharacterMap.cpp" />
     <ClCompile Include="Conn.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">false</ExcludedFromBuild>
     </ClCompile>
@@ -156,10 +158,13 @@
     </ClCompile>
     <ClCompile Include="CriticalSection.cpp" />
     <ClCompile Include="CSLockGuard.cpp" />
+    <ClCompile Include="Equipment.cpp" />
     <ClCompile Include="GameServer.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">false</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</ExcludedFromBuild>
     </ClCompile>
+    <ClCompile Include="Inven.cpp" />
+    <ClCompile Include="Item.cpp" />
     <ClCompile Include="main.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</ExcludedFromBuild>
@@ -201,9 +206,13 @@
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
     </ClCompile>
+    <ClCompile Include="User.cpp" />
+    <ClCompile Include="UserMap.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\Global\PacketDefinition.h" />
+    <ClInclude Include="Character.h" />
+    <ClInclude Include="CharacterMap.h" />
     <ClInclude Include="Conn.h">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">false</ExcludedFromBuild>
     </ClInclude>
@@ -212,9 +221,12 @@
     </ClInclude>
     <ClInclude Include="CriticalSection.h" />
     <ClInclude Include="CSLockGuard.h" />
+    <ClInclude Include="Equipment.h" />
     <ClInclude Include="GameServer.h">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">false</ExcludedFromBuild>
     </ClInclude>
+    <ClInclude Include="Inven.h" />
+    <ClInclude Include="Item.h" />
     <ClInclude Include="PacketProcess.h">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">false</ExcludedFromBuild>
     </ClInclude>
@@ -224,6 +236,8 @@
     </ClInclude>
     <ClInclude Include="SRWLock.h" />
     <ClInclude Include="SRWLockGuard.h" />
+    <ClInclude Include="User.h" />
+    <ClInclude Include="UserMap.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

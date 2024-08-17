@@ -39,12 +39,6 @@
     <ClCompile Include="template_vector_param.cpp">
       <Filter>TestCode</Filter>
     </ClCompile>
-    <ClCompile Include="Conn.cpp">
-      <Filter>WorkingTable</Filter>
-    </ClCompile>
-    <ClCompile Include="ConnMap.cpp">
-      <Filter>WorkingTable</Filter>
-    </ClCompile>
     <ClCompile Include="Template_Singleton.cpp">
       <Filter>TestCode</Filter>
     </ClCompile>
@@ -81,22 +75,40 @@
     <ClCompile Include="packet_ptr.cpp">
       <Filter>TestCode</Filter>
     </ClCompile>
+    <ClCompile Include="ConnMap.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="Conn.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="Character.cpp">
+      <Filter>WorkingTable</Filter>
+    </ClCompile>
+    <ClCompile Include="User.cpp">
+      <Filter>WorkingTable</Filter>
+    </ClCompile>
+    <ClCompile Include="CharacterMap.cpp">
+      <Filter>WorkingTable</Filter>
+    </ClCompile>
+    <ClCompile Include="Inven.cpp">
+      <Filter>WorkingTable</Filter>
+    </ClCompile>
+    <ClCompile Include="Item.cpp">
+      <Filter>WorkingTable</Filter>
+    </ClCompile>
+    <ClCompile Include="UserMap.cpp">
+      <Filter>WorkingTable</Filter>
+    </ClCompile>
+    <ClCompile Include="Equipment.cpp">
+      <Filter>WorkingTable</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="GameServer.h">
-      <Filter>소스 파일</Filter>
-    </ClInclude>
     <ClInclude Include="PacketProcess.h">
       <Filter>소스 파일</Filter>
     </ClInclude>
-    <ClInclude Include="Conn.h">
-      <Filter>WorkingTable</Filter>
-    </ClInclude>
     <ClInclude Include="Singleton.h">
       <Filter>DesignPattern</Filter>
-    </ClInclude>
-    <ClInclude Include="ConnMap.h">
-      <Filter>WorkingTable</Filter>
     </ClInclude>
     <ClInclude Include="..\Global\PacketDefinition.h">
       <Filter>헤더 파일</Filter>
@@ -115,6 +127,36 @@
     </ClInclude>
     <ClInclude Include="ServerGlobalDef.h">
       <Filter>소스 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="ConnMap.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="Conn.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="GameServer.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="User.h">
+      <Filter>WorkingTable</Filter>
+    </ClInclude>
+    <ClInclude Include="Character.h">
+      <Filter>WorkingTable</Filter>
+    </ClInclude>
+    <ClInclude Include="CharacterMap.h">
+      <Filter>WorkingTable</Filter>
+    </ClInclude>
+    <ClInclude Include="Inven.h">
+      <Filter>WorkingTable</Filter>
+    </ClInclude>
+    <ClInclude Include="Item.h">
+      <Filter>WorkingTable</Filter>
+    </ClInclude>
+    <ClInclude Include="UserMap.h">
+      <Filter>WorkingTable</Filter>
+    </ClInclude>
+    <ClInclude Include="Equipment.h">
+      <Filter>WorkingTable</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
