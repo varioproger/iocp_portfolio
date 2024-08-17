@@ -1,5 +1,0 @@
-﻿  PacketProcess.cpp
-GameServer.obj : error LNK2019: "public: __thiscall CompletionPort::CompletionPort(void)" (??0CompletionPort@@QAE@XZ)"public: __thiscall GameServer::GameServer(void)" (??0GameServer@@QAE@XZ) 함수에서 참조되는 확인할 수 없는 외부 기호
-GameServer.obj : error LNK2019: "public: __thiscall CompletionPort::~CompletionPort(void)" (??1CompletionPort@@QAE@XZ)"public: virtual __thiscall GameServer::~GameServer(void)" (??1GameServer@@UAE@XZ) 함수에서 참조되는 확인할 수 없는 외부 기호
-C:\Users\TomJeong\Desktop\iocp_portfolio\Lib\TCP_Lib.lib : warning LNK4272: 'x64' 라이브러리 컴퓨터 종류가 'x86' 대상 컴퓨터 종류와 충돌합니다.
-C:\Users\TomJeong\Desktop\iocp_portfolio\Debug\Server.exe : fatal error LNK1120: 2개의 확인할 수 없는 외부 참조입니다.
