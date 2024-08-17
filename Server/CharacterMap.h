@@ -5,6 +5,7 @@
 #include<mutex>
 #include<memory>
 
+// 현재 접속중인 캐릭터 map
 class CharacterMap : public Singleton<CharacterMap>
 {
 public:

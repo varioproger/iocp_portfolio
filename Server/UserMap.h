@@ -5,6 +5,7 @@
 #include<mutex>
 #include<memory>
 
+// 현재 접속중인 유저 map
 class UserMap : public Singleton<UserMap>
 {
 public:
