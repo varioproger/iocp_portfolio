@@ -2,6 +2,7 @@
 #include"Inven.h"
 #include"Equipment.h"
 #include"SRWLock.h"
+
 class Character
 {
 public:

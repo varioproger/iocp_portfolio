@@ -1,5 +1,5 @@
 #pragma once
-#include"Character.h"
+#include"CharacterPrototype.h"
 #include<vector>
 #include<memory>
 #include"SRWLock.h"

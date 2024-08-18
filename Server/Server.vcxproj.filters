@@ -25,6 +25,9 @@
     <Filter Include="Lock">
       <UniqueIdentifier>{188362a5-7da4-426b-8c56-c440f243c690}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Item">
+      <UniqueIdentifier>{dffcc381-d2e1-4730-9402-3f9209c73fbf}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -35,12 +38,6 @@
     </ClCompile>
     <ClCompile Include="PacketProcess.cpp">
       <Filter>소스 파일</Filter>
-    </ClCompile>
-    <ClCompile Include="template_vector_param.cpp">
-      <Filter>TestCode</Filter>
-    </ClCompile>
-    <ClCompile Include="Template_Singleton.cpp">
-      <Filter>TestCode</Filter>
     </ClCompile>
     <ClCompile Include="CSLockGuard.cpp">
       <Filter>Lock</Filter>
@@ -53,27 +50,6 @@
     </ClCompile>
     <ClCompile Include="SRWLockGuard.cpp">
       <Filter>Lock</Filter>
-    </ClCompile>
-    <ClCompile Include="shared_ptr_optional.cpp">
-      <Filter>TestCode</Filter>
-    </ClCompile>
-    <ClCompile Include="share_ptr.cpp">
-      <Filter>TestCode</Filter>
-    </ClCompile>
-    <ClCompile Include="shared_ptr_reinterpret_cast.cpp">
-      <Filter>TestCode</Filter>
-    </ClCompile>
-    <ClCompile Include="MultiThreadSingleMethod.cpp">
-      <Filter>TestCode</Filter>
-    </ClCompile>
-    <ClCompile Include="mutext_vector.cpp">
-      <Filter>TestCode</Filter>
-    </ClCompile>
-    <ClCompile Include="mod.cpp">
-      <Filter>TestCode</Filter>
-    </ClCompile>
-    <ClCompile Include="packet_ptr.cpp">
-      <Filter>TestCode</Filter>
     </ClCompile>
     <ClCompile Include="ConnMap.cpp">
       <Filter>소스 파일</Filter>
@@ -93,14 +69,20 @@
     <ClCompile Include="Inven.cpp">
       <Filter>WorkingTable</Filter>
     </ClCompile>
-    <ClCompile Include="Item.cpp">
-      <Filter>WorkingTable</Filter>
-    </ClCompile>
     <ClCompile Include="UserMap.cpp">
       <Filter>WorkingTable</Filter>
     </ClCompile>
     <ClCompile Include="Equipment.cpp">
       <Filter>WorkingTable</Filter>
+    </ClCompile>
+    <ClCompile Include="ItemBase.cpp">
+      <Filter>Item</Filter>
+    </ClCompile>
+    <ClCompile Include="Potion.cpp">
+      <Filter>Item</Filter>
+    </ClCompile>
+    <ClCompile Include="Equip.cpp">
+      <Filter>Item</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -149,14 +131,29 @@
     <ClInclude Include="Inven.h">
       <Filter>WorkingTable</Filter>
     </ClInclude>
-    <ClInclude Include="Item.h">
-      <Filter>WorkingTable</Filter>
-    </ClInclude>
     <ClInclude Include="UserMap.h">
       <Filter>WorkingTable</Filter>
     </ClInclude>
     <ClInclude Include="Equipment.h">
       <Filter>WorkingTable</Filter>
+    </ClInclude>
+    <ClInclude Include="ItemBase.h">
+      <Filter>Item</Filter>
+    </ClInclude>
+    <ClInclude Include="Equip.h">
+      <Filter>Item</Filter>
+    </ClInclude>
+    <ClInclude Include="Potion.h">
+      <Filter>Item</Filter>
+    </ClInclude>
+    <ClInclude Include="CharacterPrototype.h">
+      <Filter>DesignPattern</Filter>
+    </ClInclude>
+    <ClInclude Include="CharacterFactory.h">
+      <Filter>DesignPattern</Filter>
+    </ClInclude>
+    <ClInclude Include="Factory.h">
+      <Filter>DesignPattern</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

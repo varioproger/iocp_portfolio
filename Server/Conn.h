@@ -55,8 +55,8 @@ private:
 	void ClearSend();
 
 private:  // 관련 작업 진행해야함
-	std::shared_ptr<User> m_user; // 현재 접속 중인 유저
-	std::shared_ptr<Character> m_character; // 현재 접속 중인 
+	std::unique_ptr<User> m_user; // 현재 접속 중인 유저
+	std::unique_ptr<Character> m_character; // 현재 접속 중인 
 
 private:
 	SOCKET m_sock;

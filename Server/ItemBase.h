@@ -1,10 +1,5 @@
 #pragma once
-
-enum ItemType {
-	potion,
-	equip,
-	none
-};
+#include"ServerGlobalDef.h"
 class ItemBase
 {
 public:
