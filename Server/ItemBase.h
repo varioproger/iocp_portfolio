@@ -5,7 +5,7 @@ class ItemBase
 public:
 	ItemBase();
 	virtual ~ItemBase();
-public:
+protected:
 	ItemType m_type;
 	unsigned int m_uuid; // 고유키
 	unsigned int m_idx; // 테이블 값

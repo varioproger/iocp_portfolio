@@ -8,10 +8,10 @@ class CharacterBase
 public:
 	CharacterBase();
 	virtual ~CharacterBase();
-private:
+protected:
 	Inven m_inven; // 인벤
 	Equipment m_equip; // 장비 장착
-private:
+protected:
 	SRWLock m_lock;
 };
 
