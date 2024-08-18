@@ -3,11 +3,11 @@
 #include"Equipment.h"
 #include"SRWLock.h"
 
-class Character
+class CharacterBase
 {
 public:
-	Character();
-	~Character();
+	CharacterBase();
+	virtual ~CharacterBase();
 private:
 	Inven m_inven; // 인벤
 	Equipment m_equip; // 장비 장착

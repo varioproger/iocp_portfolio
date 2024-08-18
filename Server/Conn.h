@@ -3,7 +3,7 @@
 #include"../Global/PacketDefinition.h"
 #include"ServerGlobalDef.h"
 #include"User.h"
-#include"Character.h"
+#include"CharacterBase.h"
 #include<mutex>
 #include<concurrent_queue.h>
 #include<optional>
@@ -15,7 +15,7 @@ public:
 	WSAOverLapped_EX m_send_overlapped;
 public:
 	Conn(SOCKET sock);
-	~Conn();
+	virtual ~Conn();
 public:
 	std::mutex& GetRecvLock();
 	std::mutex& GetSendLock();
@@ -56,7 +56,7 @@ private:
 
 private:  // 관련 작업 진행해야함
 	std::unique_ptr<User> m_user; // 현재 접속 중인 유저
-	std::unique_ptr<Character> m_character; // 현재 접속 중인 
+	std::unique_ptr<CharacterBase> m_character; // 현재 접속 중인 
 
 private:
 	SOCKET m_sock;

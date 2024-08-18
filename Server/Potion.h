@@ -5,6 +5,6 @@ class Potion : public ItemBase
 {
 public:
 	Potion();
-	~Potion();
+	virtual ~Potion();
 };
 

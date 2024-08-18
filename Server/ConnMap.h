@@ -9,7 +9,7 @@
 class ConnMap : public Singleton<ConnMap>
 {
 public:
-	~ConnMap();
+	virtual ~ConnMap();
 	Conn* Insert(SOCKET key);
 	void Delete(Conn* key);
 

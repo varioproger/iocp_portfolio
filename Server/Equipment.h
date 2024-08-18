@@ -7,7 +7,7 @@ class Equipment
 {
 public:
 	Equipment();
-	~Equipment();
+	virtual ~Equipment();
 
 private:
 	std::list<std::shared_ptr<Equip>> m_litem;

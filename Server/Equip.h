@@ -5,7 +5,7 @@ class Equip : public ItemBase
 {
 public:
 	Equip();
-	~Equip();
+	virtual ~Equip();
 private:
 	EquipType type;
 };

@@ -13,9 +13,6 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
-    <Filter Include="TestCode">
-      <UniqueIdentifier>{d43e75cf-811b-46d9-9242-a154264951b7}</UniqueIdentifier>
-    </Filter>
     <Filter Include="WorkingTable">
       <UniqueIdentifier>{a2785ab8-d6d1-4f63-a5b3-6e2c159fa21b}</UniqueIdentifier>
     </Filter>
@@ -57,24 +54,6 @@
     <ClCompile Include="Conn.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
-    <ClCompile Include="Character.cpp">
-      <Filter>WorkingTable</Filter>
-    </ClCompile>
-    <ClCompile Include="User.cpp">
-      <Filter>WorkingTable</Filter>
-    </ClCompile>
-    <ClCompile Include="CharacterMap.cpp">
-      <Filter>WorkingTable</Filter>
-    </ClCompile>
-    <ClCompile Include="Inven.cpp">
-      <Filter>WorkingTable</Filter>
-    </ClCompile>
-    <ClCompile Include="UserMap.cpp">
-      <Filter>WorkingTable</Filter>
-    </ClCompile>
-    <ClCompile Include="Equipment.cpp">
-      <Filter>WorkingTable</Filter>
-    </ClCompile>
     <ClCompile Include="ItemBase.cpp">
       <Filter>Item</Filter>
     </ClCompile>
@@ -83,6 +62,30 @@
     </ClCompile>
     <ClCompile Include="Equip.cpp">
       <Filter>Item</Filter>
+    </ClCompile>
+    <ClCompile Include="CharacterBase.cpp">
+      <Filter>WorkingTable</Filter>
+    </ClCompile>
+    <ClCompile Include="CharacterMap.cpp">
+      <Filter>WorkingTable</Filter>
+    </ClCompile>
+    <ClCompile Include="Equipment.cpp">
+      <Filter>WorkingTable</Filter>
+    </ClCompile>
+    <ClCompile Include="Inven.cpp">
+      <Filter>WorkingTable</Filter>
+    </ClCompile>
+    <ClCompile Include="User.cpp">
+      <Filter>WorkingTable</Filter>
+    </ClCompile>
+    <ClCompile Include="UserMap.cpp">
+      <Filter>WorkingTable</Filter>
+    </ClCompile>
+    <ClCompile Include="Warrior.cpp">
+      <Filter>WorkingTable</Filter>
+    </ClCompile>
+    <ClCompile Include="Archer.cpp">
+      <Filter>WorkingTable</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -119,24 +122,6 @@
     <ClInclude Include="GameServer.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
-    <ClInclude Include="User.h">
-      <Filter>WorkingTable</Filter>
-    </ClInclude>
-    <ClInclude Include="Character.h">
-      <Filter>WorkingTable</Filter>
-    </ClInclude>
-    <ClInclude Include="CharacterMap.h">
-      <Filter>WorkingTable</Filter>
-    </ClInclude>
-    <ClInclude Include="Inven.h">
-      <Filter>WorkingTable</Filter>
-    </ClInclude>
-    <ClInclude Include="UserMap.h">
-      <Filter>WorkingTable</Filter>
-    </ClInclude>
-    <ClInclude Include="Equipment.h">
-      <Filter>WorkingTable</Filter>
-    </ClInclude>
     <ClInclude Include="ItemBase.h">
       <Filter>Item</Filter>
     </ClInclude>
@@ -154,6 +139,30 @@
     </ClInclude>
     <ClInclude Include="Factory.h">
       <Filter>DesignPattern</Filter>
+    </ClInclude>
+    <ClInclude Include="CharacterBase.h">
+      <Filter>WorkingTable</Filter>
+    </ClInclude>
+    <ClInclude Include="CharacterMap.h">
+      <Filter>WorkingTable</Filter>
+    </ClInclude>
+    <ClInclude Include="Equipment.h">
+      <Filter>WorkingTable</Filter>
+    </ClInclude>
+    <ClInclude Include="Inven.h">
+      <Filter>WorkingTable</Filter>
+    </ClInclude>
+    <ClInclude Include="User.h">
+      <Filter>WorkingTable</Filter>
+    </ClInclude>
+    <ClInclude Include="UserMap.h">
+      <Filter>WorkingTable</Filter>
+    </ClInclude>
+    <ClInclude Include="Archer.h">
+      <Filter>WorkingTable</Filter>
+    </ClInclude>
+    <ClInclude Include="Warrior.h">
+      <Filter>WorkingTable</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

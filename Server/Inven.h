@@ -7,7 +7,7 @@ class Inven
 {
 public:
 	Inven();
-	~Inven();
+	virtual ~Inven();
 	void Add();
 	void Create();
 	void Delete();

@@ -4,7 +4,7 @@ class ItemBase
 {
 public:
 	ItemBase();
-	~ItemBase();
+	virtual ~ItemBase();
 public:
 	ItemType m_type;
 	unsigned int m_uuid; // ∞Ì¿Ø≈∞

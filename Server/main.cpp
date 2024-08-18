@@ -2,6 +2,7 @@
 #include"PacketProcess.h"
 #include"GameServer.h"
 #include"ConnMap.h"
+#include"CharacterPrototype.h"
 #include<vector>
 #include<iostream>
 #include <stdlib.h>
@@ -53,6 +54,7 @@ int main()
 	START_SERVER(GameServer, gs);
 	SOCKET sock = SET_SERVER(gs, sock);
 
+	CharacterPrototype::getInstance()->Init();
 	size_t cpu_count = gs.GetThreadCount();
 	gs.CreateIOPort();
 

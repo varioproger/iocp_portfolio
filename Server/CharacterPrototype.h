@@ -5,20 +5,21 @@
 #include"CharacterFactory.h"
 #include"ServerGlobalDef.h"
 
-class Prototype : Singleton<Prototype>{
+class CharacterPrototype : public Singleton<CharacterPrototype>{
 private:
-    std::vector<std::unique_ptr<MethodFactory<Character>>> m_prototypes;
-
+    std::vector<std::unique_ptr<MethodFactory<CharacterBase>>> m_prototypes;
 public:
-    Prototype() {
-        m_prototypes.emplace_back(std::make_unique<Warrior>());
-        m_prototypes.emplace_back(std::make_unique<Archer>());
+    virtual ~CharacterPrototype() {}
+    void Init()
+    {
+        m_prototypes.emplace_back(std::make_unique<WarriorFactory>());
+        m_prototypes.emplace_back(std::make_unique<ArcherFactory>());
     }
     /**
      * Notice here that you just need to specify the type of the prototype you
      * want and the method will create from the object with this type.
      */
-    Character&& CreatePrototype(CharacterType type) {
+    CharacterBase* CreatePrototype(CharacterType type) {
         return m_prototypes[(int)type]->Create();
     }
 };
