@@ -10,7 +10,7 @@ public:
 	{
 
 	}
-	~PacketProcessBase()
+	virtual ~PacketProcessBase()
 	{
 
 	}
