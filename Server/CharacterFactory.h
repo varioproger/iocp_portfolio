@@ -1,7 +1,6 @@
 #pragma once
 #include<memory>
 #include"Factory.h"
-#include"CharacterBase.h"
 #include"Warrior.h"
 #include"Archer.h"
 // 캐릭터 특수화

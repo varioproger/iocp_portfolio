@@ -14,6 +14,6 @@ public:
 	void Use();
 	void Swap();
 private:
-	std::list<std::shared_ptr<ItemBase>> m_litem;
+	std::list<std::unique_ptr<ItemBase>> m_litem;
 };
 

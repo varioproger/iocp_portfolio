@@ -10,6 +10,6 @@ public:
 	virtual ~Equipment();
 
 private:
-	std::list<std::shared_ptr<Equip>> m_litem;
+	std::list<std::unique_ptr<Equip>> m_litem;
 };
 
