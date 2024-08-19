@@ -185,7 +185,6 @@
     <ClInclude Include="..\Global\PacketDefinition.h" />
     <ClInclude Include="Archer.h" />
     <ClInclude Include="CharacterBase.h" />
-    <ClInclude Include="CharacterFactory.h" />
     <ClInclude Include="CharacterMap.h" />
     <ClInclude Include="CharacterPrototype.h" />
     <ClInclude Include="Conn.h">
@@ -198,12 +197,13 @@
     <ClInclude Include="CSLockGuard.h" />
     <ClInclude Include="Equip.h" />
     <ClInclude Include="Equipment.h" />
-    <ClInclude Include="Factory.h" />
+    <ClInclude Include="Prototype.h" />
     <ClInclude Include="GameServer.h">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">false</ExcludedFromBuild>
     </ClInclude>
     <ClInclude Include="Inven.h" />
     <ClInclude Include="ItemBase.h" />
+    <ClInclude Include="ItemPrototype.h" />
     <ClInclude Include="PacketProcess.h">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">false</ExcludedFromBuild>
     </ClInclude>

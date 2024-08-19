@@ -6,15 +6,16 @@ constexpr int KB_128 = KB_1 << 7;// 2의 7 승은 128 이고 1024 * 128 이므로 128KB 
 
 enum class CharacterType
 {
-	WARRIOR,
-	ARCHER,
-	WITCH,
+	Warrior,
+	Archer,
+	Witch,
+	None,
 };
 
 enum class ItemType {
-	potion,
-	equip,
-	none
+	Potion,
+	Equip,
+	None,
 };
 
 enum class EquipType {
@@ -24,4 +25,5 @@ enum class EquipType {
 	Helmet,
 	Glove,
 	Shoes,
+	None,
 };

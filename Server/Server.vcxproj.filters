@@ -134,10 +134,7 @@
     <ClInclude Include="CharacterPrototype.h">
       <Filter>DesignPattern</Filter>
     </ClInclude>
-    <ClInclude Include="CharacterFactory.h">
-      <Filter>DesignPattern</Filter>
-    </ClInclude>
-    <ClInclude Include="Factory.h">
+    <ClInclude Include="Prototype.h">
       <Filter>DesignPattern</Filter>
     </ClInclude>
     <ClInclude Include="CharacterBase.h">
@@ -163,6 +160,9 @@
     </ClInclude>
     <ClInclude Include="Warrior.h">
       <Filter>WorkingTable</Filter>
+    </ClInclude>
+    <ClInclude Include="ItemPrototype.h">
+      <Filter>DesignPattern</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
