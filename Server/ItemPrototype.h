@@ -29,11 +29,11 @@ public:
     }
 };
 
-class CharacterPrototypeFactory : public Singleton<CharacterPrototypeFactory> {
+class ItemPrototypeFactory : public Singleton<ItemPrototypeFactory> {
 private:
     std::vector<std::unique_ptr<Prototype<ItemBase>>> m_prototypes;
 public:
-    virtual ~CharacterPrototypeFactory() {}
+    virtual ~ItemPrototypeFactory() {}
     void Init()
     {
         m_prototypes.emplace_back(std::make_unique<PotionPrototype>());

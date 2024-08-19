@@ -3,6 +3,7 @@
 #include"GameServer.h"
 #include"ConnMap.h"
 #include"CharacterPrototype.h"
+#include"ItemPrototype.h"
 #include<vector>
 #include<iostream>
 #include <stdlib.h>
@@ -55,7 +56,7 @@ int main()
 	SOCKET sock = SET_SERVER(gs, sock);
 
 	CharacterPrototypeFactory::getInstance()->Init();
-
+	ItemPrototypeFactory::getInstance()->Init();
 	size_t cpu_count = gs.GetThreadCount();
 	gs.CreateIOPort();
 
