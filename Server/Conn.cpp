@@ -22,6 +22,7 @@ Conn::~Conn()
 	delete m_send_overlapped.m_buf;
 	m_send_packet_size = 0;
 	m_send_bytes = 0;
+	closesocket(m_sock);
 }
 
 std::mutex& Conn::GetRecvLock()
