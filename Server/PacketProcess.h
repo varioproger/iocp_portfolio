@@ -28,7 +28,6 @@ public:
 private:
 	virtual BOOL ProcessSignal(char* packet, Conn* ptr) override;
 private:
-	std::mutex m_process_lock;
-	std::mutex m_signal_lock;
+	static std::mutex m_signal_lock;
 };
 
