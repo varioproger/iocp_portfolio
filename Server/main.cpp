@@ -55,8 +55,8 @@ int main()
 	START_SERVER(GameServer, gs);
 	SOCKET sock = SET_SERVER(gs, sock);
 
-	CharacterPrototypeFactory::getInstance()->Init();
-	ItemPrototypeFactory::getInstance()->Init();
+	CharacterPrototypeFactory->Init();
+	ItemPrototypeFactory->Init();
 	size_t cpu_count = gs.GetThreadCount();
 	gs.CreateIOPort();
 

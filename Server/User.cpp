@@ -2,8 +2,8 @@
 #include"CharacterPrototype.h"
 User::User()
 {
-    m_vcharacter.emplace_back(CharacterPrototypeFactory::getInstance()->CreatePrototype(CharacterType::Warrior));
-    m_vcharacter.emplace_back(CharacterPrototypeFactory::getInstance()->CreatePrototype(CharacterType::Archer));
+    m_vcharacter.emplace_back(CharacterPrototypeFactory->CreatePrototype(CharacterType::Warrior));
+    m_vcharacter.emplace_back(CharacterPrototypeFactory->CreatePrototype(CharacterType::Archer));
 }
 
 User::~User()

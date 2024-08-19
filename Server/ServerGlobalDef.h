@@ -27,3 +27,9 @@ enum class EquipType {
 	Shoes,
 	None,
 };
+
+struct CharacterBasicInfo {
+	int str;
+	int dex;
+	int luck;
+};

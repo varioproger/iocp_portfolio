@@ -25,6 +25,9 @@
     <Filter Include="Item">
       <UniqueIdentifier>{dffcc381-d2e1-4730-9402-3f9209c73fbf}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Character">
+      <UniqueIdentifier>{f71173a0-f85b-4b63-b63c-e583beece6f4}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -63,9 +66,6 @@
     <ClCompile Include="Equip.cpp">
       <Filter>Item</Filter>
     </ClCompile>
-    <ClCompile Include="CharacterBase.cpp">
-      <Filter>WorkingTable</Filter>
-    </ClCompile>
     <ClCompile Include="CharacterMap.cpp">
       <Filter>WorkingTable</Filter>
     </ClCompile>
@@ -81,11 +81,14 @@
     <ClCompile Include="UserMap.cpp">
       <Filter>WorkingTable</Filter>
     </ClCompile>
-    <ClCompile Include="Warrior.cpp">
-      <Filter>WorkingTable</Filter>
-    </ClCompile>
     <ClCompile Include="Archer.cpp">
-      <Filter>WorkingTable</Filter>
+      <Filter>Character</Filter>
+    </ClCompile>
+    <ClCompile Include="CharacterBase.cpp">
+      <Filter>Character</Filter>
+    </ClCompile>
+    <ClCompile Include="Warrior.cpp">
+      <Filter>Character</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -137,9 +140,6 @@
     <ClInclude Include="Prototype.h">
       <Filter>DesignPattern</Filter>
     </ClInclude>
-    <ClInclude Include="CharacterBase.h">
-      <Filter>WorkingTable</Filter>
-    </ClInclude>
     <ClInclude Include="CharacterMap.h">
       <Filter>WorkingTable</Filter>
     </ClInclude>
@@ -155,14 +155,17 @@
     <ClInclude Include="UserMap.h">
       <Filter>WorkingTable</Filter>
     </ClInclude>
-    <ClInclude Include="Archer.h">
-      <Filter>WorkingTable</Filter>
-    </ClInclude>
-    <ClInclude Include="Warrior.h">
-      <Filter>WorkingTable</Filter>
-    </ClInclude>
     <ClInclude Include="ItemPrototype.h">
       <Filter>DesignPattern</Filter>
+    </ClInclude>
+    <ClInclude Include="Archer.h">
+      <Filter>Character</Filter>
+    </ClInclude>
+    <ClInclude Include="CharacterBase.h">
+      <Filter>Character</Filter>
+    </ClInclude>
+    <ClInclude Include="Warrior.h">
+      <Filter>Character</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

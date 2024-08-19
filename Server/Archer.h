@@ -5,4 +5,6 @@ class Archer : public CharacterBase {
 public:
 	Archer();
 	~Archer();
+protected:
+	virtual void SetBasicInfo() override;
 };

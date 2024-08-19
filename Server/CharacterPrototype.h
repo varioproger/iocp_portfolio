@@ -47,3 +47,5 @@ public:
         return m_prototypes[(int)type]->Create();
     }
 };
+
+#define CharacterPrototypeFactory CharacterPrototypeFactory::getInstance()
