@@ -1,4 +1,4 @@
-#include "PacketProcess.h"
+ï»¿#include "PacketProcess.h"
 #include<iostream>
 
 std::mutex PacketProcess::m_signal_lock;
@@ -13,9 +13,9 @@ PacketProcess::~PacketProcess()
 
 BOOL PacketProcess::ProcessPacket(Conn* ptr)
 {
-	// ¿©·¯ ½º·¹µå¿¡¼­ ProcessPacket ÇÔ¼ö¸¦ Á¢±ÙÇÏ´Â°Å¿¡ ´ëÇÑ Á¦ÇÑÀ» µÎ´õ¶óµµ ÀÌ ÇÔ¼ö°¡ ³¡³¯¶§ ±îÁö Àâ¾ÆµÎ´Â°Ç ¸Å¿ì ºñÈ¿¿ï ÀûÀÌ´Ù.
+	// ì—¬ëŸ¬ ìŠ¤ë ˆë“œì—ì„œ ProcessPacket í•¨ìˆ˜ë¥¼ ì ‘ê·¼í•˜ëŠ”ê±°ì— ëŒ€í•œ ì œí•œì„ ë‘ë”ë¼ë„ ì´ í•¨ìˆ˜ê°€ ëë‚ ë•Œ ê¹Œì§€ ìž¡ì•„ë‘ëŠ”ê±´ ë§¤ìš° ë¹„íš¨ìš¸ ì ì´ë‹¤. 
 
-	char* packet = ptr->GetRecvBuf(); // Recv ¹öÆÛ´Â StartRecv°¡ È£ÃâÀÌ µÇ¾î¾ß º¯°æÀÌ µÇ±â ¶§¹®¿¡ ±×³É Á¢±ÙÇØµµ ¹®Á¦ ¾ø´Ù.
+	char* packet = ptr->GetRecvBuf(); // Recv ë²„í¼ëŠ” StartRecvê°€ í˜¸ì¶œì´ ë˜ì–´ì•¼ ë³€ê²½ì´ ë˜ê¸° ë•Œë¬¸ì— ê·¸ëƒ¥ ì ‘ê·¼í•´ë„ ë¬¸ì œ ì—†ë‹¤.
 	BaseMsg* msg = (BaseMsg*)packet;
 	switch (msg->Type)
 	{

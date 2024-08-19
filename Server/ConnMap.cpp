@@ -1,4 +1,4 @@
-#include "ConnMap.h"
+ï»¿#include "ConnMap.h"
 #include"CSLockGuard.h"
 
 ConnMap::~ConnMap()
@@ -32,6 +32,6 @@ std::optional<Conn*>  ConnMap::Select(SOCKET key)
 		return it->second;
 	}
 
-	// nullopt ´Â <optional> ¿¡ Á¤ÀÇµÈ °´Ã¼·Î ºñ¾îÀÖ´Â optional À» ÀÇ¹ÌÇÑ´Ù.
+	// nullopt ëŠ” <optional> ì— ì •ì˜ëœ ê°ì²´ë¡œ ë¹„ì–´ìˆëŠ” optional ì„ ì˜ë¯¸í•œë‹¤. 
 	return std::nullopt;
 }

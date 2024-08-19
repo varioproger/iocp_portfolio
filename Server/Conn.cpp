@@ -1,4 +1,4 @@
-#include "Conn.h"
+ï»¿#include "Conn.h"
 #include"ServerGlobalDef.h"
 #include"SRWLockGuard.h"
 
@@ -126,11 +126,11 @@ BOOL Conn::StartRecv()
 	{
 		ClearRecv();
 	}
-	if (m_recv_bytes < SizeBaseMsg) //¸Ç ¾Õ¿¡ ÆÐÅ¶ »çÀÌÁî ¸¸Å­ ¸ø ÀÐ¾ú°Å³ª int °ª ÇÑ°³ ÀÌ°Å³ª
+	if (m_recv_bytes < SizeBaseMsg) //ë§¨ ì•žì— íŒ¨í‚· ì‚¬ì´ì¦ˆ ë§Œí¼ ëª» ì½ì—ˆê±°ë‚˜ int ê°’ í•œê°œ ì´ê±°ë‚˜ 
 	{
 		len = SizeBaseMsg - m_recv_bytes;
 	}
-	else  // »çÀÌÁî ÆÐÅ¶ ´Ù ÀÐ°í ±× µÚ¿¡ ÆÐÅ¶ µ¥ÀÌÅÍ¸¦ ÀÐ°í ÀÖ´Â°Í
+	else  // ì‚¬ì´ì¦ˆ íŒ¨í‚· ë‹¤ ì½ê³  ê·¸ ë’¤ì— íŒ¨í‚· ë°ì´í„°ë¥¼ ì½ê³  ìžˆëŠ”ê²ƒ
 	{
 		len = m_recv_packet_size - m_recv_bytes;
 	}
@@ -141,13 +141,13 @@ BOOL Conn::StartRecv()
 BOOL Conn::AddSend(BaseMsg* packet)
 {
 	std::lock_guard<std::mutex> lock(m_send_lock);
-	if (m_send_queue.empty() == true)// ÇöÀç ºñ¾îÀÖÀ½.
+	if (m_send_queue.empty() == true)// í˜„ìž¬ ë¹„ì–´ìžˆìŒ.
 	{
 		memcpy(m_send_overlapped.m_buf, (char*)packet, packet->Size);
 		m_send_packet_size = packet->Size;
 		return Send(m_send_overlapped.m_buf + m_send_bytes, m_send_packet_size - m_send_bytes);
 	}
-	else // Ã³¸®ÇØ¾ßÇÏ´Â ÆÐÅ¶ÀÌ »çÀü¿¡ ÀÖÀ½
+	else // ì²˜ë¦¬í•´ì•¼í•˜ëŠ” íŒ¨í‚·ì´ ì‚¬ì „ì— ìžˆìŒ
 	{
 		m_send_queue.push(packet);
 		return TRUE;
@@ -178,10 +178,10 @@ BOOL Conn::Recv(char* buf, int len)
 	DWORD recvbyte;
 	DWORD flag = 0;
 	/*
-	WSARecv½Ã¿¡ »ý¼ºÅ°, Àü¼Û ¹ÙÀÌÆ® ¼ö, ¿¡·¯ ÄÚµå , OVERLAPPED ±¸Á¶Ã¼ Æ÷ÀÎÅÍ¸¦ ÇÏ³ªÀÇ ¿£Æ®¸®·Î ¸¸µé¾î ÀÔÃâ·Â ¿Ï·á Å¥(I/O Completion Queue)¿¡ ¿£Å¥ÇÑ´Ù
+	WSARecvì‹œì— ìƒì„±í‚¤, ì „ì†¡ ë°”ì´íŠ¸ ìˆ˜, ì—ëŸ¬ ì½”ë“œ , OVERLAPPED êµ¬ì¡°ì²´ í¬ì¸í„°ë¥¼ í•˜ë‚˜ì˜ ì—”íŠ¸ë¦¬ë¡œ ë§Œë“¤ì–´ ìž…ì¶œë ¥ ì™„ë£Œ í(I/O Completion Queue)ì— ì—”íí•œë‹¤
 
-	OVERLAPPED ±¸Á¶Ã¼¿¡ ÇØ´ç Á¤º¸¸¦ ´ã¾Æ¼­ ¿£Å¥ ÇÏ±â ¶§¹®¿¡ ±×Àü¿¡ °´Ã¼¸¦ ¹Ì¸® ºñ¿ö ³õ´Â°ÍÀÌ´Ù.
-	²À ±×·¡¾ß ÇÏ´Â°Ç ¾Æ´ÏÁö¸¸ ´õ ¾ÈÀüÇÏ±â ¶§¹®ÀÌ´Ù
+	OVERLAPPED êµ¬ì¡°ì²´ì— í•´ë‹¹ ì •ë³´ë¥¼ ë‹´ì•„ì„œ ì—”í í•˜ê¸° ë•Œë¬¸ì— ê·¸ì „ì— ê°ì²´ë¥¼ ë¯¸ë¦¬ ë¹„ì›Œ ë†“ëŠ”ê²ƒì´ë‹¤.
+	ê¼­ ê·¸ëž˜ì•¼ í•˜ëŠ”ê±´ ì•„ë‹ˆì§€ë§Œ ë” ì•ˆì „í•˜ê¸° ë•Œë¬¸ì´ë‹¤
 	*/
 	memset(&m_recv_overlapped.m_overlapped, 0, sizeof(WSAOVERLAPPED));
 
@@ -203,10 +203,10 @@ BOOL Conn::Recv(char* buf, int len)
 BOOL Conn::Send(char* buf, int len)
 {
 	/*
-	WSASend½Ã¿¡ »ý¼ºÅ°, Àü¼Û ¹ÙÀÌÆ® ¼ö, ¿¡·¯ ÄÚµå , OVERLAPPED ±¸Á¶Ã¼ Æ÷ÀÎÅÍ¸¦ ÇÏ³ªÀÇ ¿£Æ®¸®·Î ¸¸µé¾î ÀÔÃâ·Â ¿Ï·á Å¥(I/O Completion Queue)¿¡ ¿£Å¥ÇÑ´Ù
+	WSASendì‹œì— ìƒì„±í‚¤, ì „ì†¡ ë°”ì´íŠ¸ ìˆ˜, ì—ëŸ¬ ì½”ë“œ , OVERLAPPED êµ¬ì¡°ì²´ í¬ì¸í„°ë¥¼ í•˜ë‚˜ì˜ ì—”íŠ¸ë¦¬ë¡œ ë§Œë“¤ì–´ ìž…ì¶œë ¥ ì™„ë£Œ í(I/O Completion Queue)ì— ì—”íí•œë‹¤
 
-	OVERLAPPED ±¸Á¶Ã¼¿¡ ÇØ´ç Á¤º¸¸¦ ´ã¾Æ¼­ ¿£Å¥ ÇÏ±â ¶§¹®¿¡ ±×Àü¿¡ °´Ã¼¸¦ ¹Ì¸® ºñ¿ö ³õ´Â°ÍÀÌ´Ù.
-	²À ±×·¡¾ß ÇÏ´Â°Ç ¾Æ´ÏÁö¸¸ ´õ ¾ÈÀüÇÏ±â ¶§¹®ÀÌ´Ù
+	OVERLAPPED êµ¬ì¡°ì²´ì— í•´ë‹¹ ì •ë³´ë¥¼ ë‹´ì•„ì„œ ì—”í í•˜ê¸° ë•Œë¬¸ì— ê·¸ì „ì— ê°ì²´ë¥¼ ë¯¸ë¦¬ ë¹„ì›Œ ë†“ëŠ”ê²ƒì´ë‹¤.
+	ê¼­ ê·¸ëž˜ì•¼ í•˜ëŠ”ê±´ ì•„ë‹ˆì§€ë§Œ ë” ì•ˆì „í•˜ê¸° ë•Œë¬¸ì´ë‹¤
 	*/
 	DWORD sendbyte;
 

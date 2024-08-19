@@ -1,4 +1,4 @@
-#pragma once
+ï»¿#pragma once
 #include<vector>
 #include<memory>
 #include"ServerGlobalDef.h"
@@ -8,11 +8,11 @@
 #include"Equip.h"
 
 
-// ¾ÆÀÌÅÛ Æ¯¼öÈ­
+// ì•„ì´í…œ íŠ¹ìˆ˜í™”
 class PotionPrototype : public Prototype<ItemBase> {
 public:
     PotionPrototype() {  }
-    virtual ~PotionPrototype() {  } // ±î¸ÔÀ» ¼ö ÀÖÀ¸´Ï±î ±×³É ´Ù ¼Ò¸êÀÚ¿¡´Â virtualÀ» °®´Ù ºÙÀÌÀÚ
+    virtual ~PotionPrototype() {  } // ê¹Œë¨¹ì„ ìˆ˜ ìˆìœ¼ë‹ˆê¹Œ ê·¸ëƒ¥ ë‹¤ ì†Œë©¸ìì—ëŠ” virtualì„ ê°–ë‹¤ ë¶™ì´ì 
 public:
     virtual ItemBase* Create() {
         return new Potion();

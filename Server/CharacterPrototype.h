@@ -1,4 +1,4 @@
-#pragma once
+ï»¿#pragma once
 #include<vector>
 #include<memory>
 #include"ServerGlobalDef.h"
@@ -8,11 +8,11 @@
 #include"Archer.h"
 
 
-// Ä³¸¯ÅÍ Æ¯¼öÈ­
+// ìºë¦­í„° íŠ¹ìˆ˜í™”
 class WarriorPrototype : public Prototype<CharacterBase> {
 public:
     WarriorPrototype() {  }
-    virtual ~WarriorPrototype() {  } // ±î¸ÔÀ» ¼ö ÀÖÀ¸´Ï±î ±×³É ´Ù ¼Ò¸êÀÚ¿¡´Â virtualÀ» °®´Ù ºÙÀÌÀÚ
+    virtual ~WarriorPrototype() {  } // ê¹Œë¨¹ì„ ìˆ˜ ìˆìœ¼ë‹ˆê¹Œ ê·¸ëƒ¥ ë‹¤ ì†Œë©¸ìì—ëŠ” virtualì„ ê°–ë‹¤ ë¶™ì´ì
 public:
     virtual CharacterBase* Create() {
         return new Warrior();

@@ -1,8 +1,8 @@
-#pragma once
+ï»¿#pragma once
 constexpr int KB_1 = 1024;
-constexpr int KB_4 = KB_1 << 2;// 2ÀÇ 2 ½ÂÀº 4 ÀÌ°í 1024 * 4 ÀÌ¹Ç·Î 4KB Å©±â°¡ µÈ´Ù.
-constexpr int KB_8 = KB_1 << 3;// 2ÀÇ 3 ½ÂÀº 8 ÀÌ°í 1024 * 8 ÀÌ¹Ç·Î 8KB Å©±â°¡ µÈ´Ù.
-constexpr int KB_128 = KB_1 << 7;// 2ÀÇ 7 ½ÂÀº 128 ÀÌ°í 1024 * 128 ÀÌ¹Ç·Î 128KB Å©±â°¡ µÈ´Ù.
+constexpr int KB_4 = KB_1 << 2;// 2ì˜ 2 ìŠ¹ì€ 4 ì´ê³  1024 * 4 ì´ë¯€ë¡œ 4KB í¬ê¸°ê°€ ëœë‹¤. 
+constexpr int KB_8 = KB_1 << 3;// 2ì˜ 3 ìŠ¹ì€ 8 ì´ê³  1024 * 8 ì´ë¯€ë¡œ 8KB í¬ê¸°ê°€ ëœë‹¤.
+constexpr int KB_128 = KB_1 << 7;// 2ì˜ 7 ìŠ¹ì€ 128 ì´ê³  1024 * 128 ì´ë¯€ë¡œ 128KB í¬ê¸°ê°€ ëœë‹¤.
 
 enum class CharacterType
 {

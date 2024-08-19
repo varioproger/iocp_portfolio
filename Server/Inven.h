@@ -1,21 +1,21 @@
-#pragma once
+ï»¿#pragma once
 #include"ItemBase.h"
 #include<list>
 #include<memory>
 
-class Inven // CharacterBase°¡ LockÀ» °¡Áö°í ÀÖÀ¸¹Ç·Î ÇÊ¿ä°¡ ¾ø´Ù.
+class Inven // CharacterBaseê°€ Lockì„ ê°€ì§€ê³  ìˆìœ¼ë¯€ë¡œ í•„ìš”ê°€ ì—†ë‹¤. 
 {
 public:
 	Inven();
 	virtual ~Inven();
-	void Add(); // ¾ÆÀÌÅÛ Ãß°¡
-	void Create(ItemType type,int item_idx); // ¾ÆÀÌÅÛ »ı¼º
-	void Delete(); // ¾ÆÀÌÅÛ »èÁ¦
-	void Use(); // ¾ÆÀÌÅÛ »ç¿ë
-	void Swap(); // ÀÎº¥ À§Ä¡ º¯°æ
-	std::shared_ptr<ItemBase> Select();// ¾ÆÀÌÅÛ È®ÀÎ
+	void Add(); // ì•„ì´í…œ ì¶”ê°€
+	void Create(ItemType type,int item_idx); // ì•„ì´í…œ ìƒì„±
+	void Delete(); // ì•„ì´í…œ ì‚­ì œ
+	void Use(); // ì•„ì´í…œ ì‚¬ìš©
+	void Swap(); // ì¸ë²¤ ìœ„ì¹˜ ë³€ê²½
+	std::shared_ptr<ItemBase> Select();// ì•„ì´í…œ í™•ì¸
 	void clear();
 private:
-	std::list<std::shared_ptr<ItemBase>> m_litem; // Ä³¸¯ÅÍ¿ÍÀÇ °Å·¡³ª °æ¸ÅÀå µî ³»°¡ ¾Æ´Ñ Å¸ÀÎ °ú ±³·ù°¡ ÀÖ±â ¶§¹®¿¡ shared·Î ÇÑ´Ù.
+	std::list<std::shared_ptr<ItemBase>> m_litem; // ìºë¦­í„°ì™€ì˜ ê±°ë˜ë‚˜ ê²½ë§¤ì¥ ë“± ë‚´ê°€ ì•„ë‹Œ íƒ€ì¸ ê³¼ êµë¥˜ê°€ ìˆê¸° ë•Œë¬¸ì— sharedë¡œ í•œë‹¤.
 };
 

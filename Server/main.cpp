@@ -1,4 +1,4 @@
-#pragma comment(lib,"TCP_Lib.lib")
+ï»¿#pragma comment(lib,"TCP_Lib.lib")
 #include"PacketProcess.h"
 #include"GameServer.h"
 #include"ConnMap.h"
@@ -83,17 +83,17 @@ int main()
 		inet_ntop(AF_INET, &(clientaddr.sin_addr), str, INET_ADDRSTRLEN);
 		if (client_sock == INVALID_SOCKET)
 		{
-			printf("\n[TCP ¼­¹ö] Å¬¶óÀÌ¾ğÆ® Á¢¼Ó ¿¡·¯: IP ÁÖ¼Ò=%s, Æ÷Æ® ¹øÈ£=%d\n",	str, ntohs(clientaddr.sin_port));
+			printf("\n[TCP ì„œë²„] í´ë¼ì´ì–¸íŠ¸ ì ‘ì† ì—ëŸ¬: IP ì£¼ì†Œ=%s, í¬íŠ¸ ë²ˆí˜¸=%d\n",	str, ntohs(clientaddr.sin_port));
 			memset(str, 0, sizeof(str));
 			continue;
 		}
 		auto client_conn = ConnMap::getInstance()->Insert(client_sock);
-		// Æ÷ÀÎÅÍ°¡ ´Ù¸¥ Æ÷ÀÎÅÍ Çü½ÄÀ¸·Î º¯È¯µÉ ¼ö ÀÖµµ·Ï ÇÕ´Ï´Ù. ¶ÇÇÑ Á¤¼ö °è¿­ Çü½ÄÀÌ Æ÷ÀÎÅÍ Çü½ÄÀ¸·Î º¯È¯µÉ ¼ö ÀÖµµ·Ï ÇÏ°í ±× ¹İ´ë·Îµµ º¯È¯µÉ ¼ö ÀÖµµ·Ï ÇÕ´Ï´Ù.
-		// shared_ptrÀ» reinterpret_cast ·Î Ä³½ºÆÃÀÌ ¾ÈµÊ. ±×·¸´Ù°í getÀ¸·Î ÇÏ¸é use_count°¡ ¾È¿À¸§. ±×·³ shared_ptr »ç¿ëÇÏ´Â ÀÇ¹Ì°¡ ¾ø¾îÁü.
+		// í¬ì¸í„°ê°€ ë‹¤ë¥¸ í¬ì¸í„° í˜•ì‹ìœ¼ë¡œ ë³€í™˜ë  ìˆ˜ ìˆë„ë¡ í•©ë‹ˆë‹¤. ë˜í•œ ì •ìˆ˜ ê³„ì—´ í˜•ì‹ì´ í¬ì¸í„° í˜•ì‹ìœ¼ë¡œ ë³€í™˜ë  ìˆ˜ ìˆë„ë¡ í•˜ê³  ê·¸ ë°˜ëŒ€ë¡œë„ ë³€í™˜ë  ìˆ˜ ìˆë„ë¡ í•©ë‹ˆë‹¤. 
+		// shared_ptrì„ reinterpret_cast ë¡œ ìºìŠ¤íŒ…ì´ ì•ˆë¨. ê·¸ë ‡ë‹¤ê³  getìœ¼ë¡œ í•˜ë©´ use_countê°€ ì•ˆì˜¤ë¦„. ê·¸ëŸ¼ shared_ptr ì‚¬ìš©í•˜ëŠ” ì˜ë¯¸ê°€ ì—†ì–´ì§.
 		gs.Register(client_sock, reinterpret_cast<ULONG_PTR>(client_conn));
 
 		client_conn->StartRecv();
-		printf("\n[TCP ¼­¹ö] Å¬¶óÀÌ¾ğÆ® Á¢¼Ó ¼º°ø: IP ÁÖ¼Ò=%s, Æ÷Æ® ¹øÈ£=%d\n", str, ntohs(clientaddr.sin_port));
+		printf("\n[TCP ì„œë²„] í´ë¼ì´ì–¸íŠ¸ ì ‘ì† ì„±ê³µ: IP ì£¼ì†Œ=%s, í¬íŠ¸ ë²ˆí˜¸=%d\n", str, ntohs(clientaddr.sin_port));
 		memset(str, 0, sizeof(str));
 	}
 	gs.JoinThread();

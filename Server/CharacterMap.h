@@ -1,11 +1,11 @@
-#pragma once
+ï»¿#pragma once
 #include"CharacterBase.h"
 #include"Singleton.h"
 #include<map>
 #include<mutex>
 #include<memory>
 
-// ÇöÀç Á¢¼ÓÁßÀÎ Ä³¸¯ÅÍ map
+// í˜„ì¬ ì ‘ì†ì¤‘ì¸ ìºë¦­í„° map 
 class CharacterMap : public Singleton<CharacterMap>
 {
 public:

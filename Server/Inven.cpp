@@ -1,4 +1,4 @@
-#include "Inven.h"
+ï»¿#include "Inven.h"
 #include"ItemPrototype.h"
 
 Inven::Inven()
@@ -21,7 +21,7 @@ void Inven::Create(ItemType type, int item_idx)
 	{
 	case ItemType::Potion:
 	{
-		// ¾ÆÀÌÅÛ Å×ÀÌºí¿¡¼­ item_idx·Î Á¤º¸ °¡Á®¿Í¼­ ¸¸µé¾î¼­ ³Ö¾îÁÜ
+		// ì•„ì´í…œ í…Œì´ë¸”ì—ì„œ item_idxë¡œ ì •ë³´ ê°€ì ¸ì™€ì„œ ë§Œë“¤ì–´ì„œ ë„£ì–´ì¤Œ 
 		Potion* item = dynamic_cast<Potion*>(ItemPrototypeFactory->CreatePrototype(ItemType::Potion));
 		if (item == nullptr)
 		{
@@ -33,7 +33,7 @@ void Inven::Create(ItemType type, int item_idx)
 	break;
 	case ItemType::Equip:
 	{
-		// ¾ÆÀÌÅÛ Å×ÀÌºí¿¡¼­ item_idx·Î Á¤º¸ °¡Á®¿Í¼­ ¸¸µé¾î¼­ ³Ö¾îÁÜ
+		// ì•„ì´í…œ í…Œì´ë¸”ì—ì„œ item_idxë¡œ ì •ë³´ ê°€ì ¸ì™€ì„œ ë§Œë“¤ì–´ì„œ ë„£ì–´ì¤Œ
 		Equip* item = dynamic_cast<Equip*>(ItemPrototypeFactory->CreatePrototype(ItemType::Equip));
 		if (item == nullptr)
 		{

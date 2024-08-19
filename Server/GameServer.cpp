@@ -1,4 +1,4 @@
-#include"../Global/PacketDefinition.h"
+ï»¿#include"../Global/PacketDefinition.h"
 #include "GameServer.h"
 #include"ConnMap.h"
 #include"PacketProcess.h"
@@ -79,7 +79,7 @@ void GameServer::WorkerThread(LPVOID arg)
 			ECSocketResult ret = CompleteSend(Conn, cbTransferrd);
 			if (ret == ECSocketResult::FINISHED)
 			{
-				if (Conn->PopSend() == FALSE) // Send°¡ ¿Ï·áµÇ¸é Ãß°¡·Î ´õ Send ÇÒ°Ô ÀÖ´ÂÁö È®ÀÎÇÑ ÀÌÈÄ¿¡ ÀÖÀ¸¸é Send ´Ù½Ã ÁøÇà
+				if (Conn->PopSend() == FALSE) // Sendê°€ ì™„ë£Œë˜ë©´ ì¶”ê°€ë¡œ ë” Send í• ê²Œ ìžˆëŠ”ì§€ í™•ì¸í•œ ì´í›„ì— ìžˆìœ¼ë©´ Send ë‹¤ì‹œ ì§„í–‰ 
 				{
 					printf("Send Eror\n");
 					CloseCon(Conn);
@@ -108,7 +108,7 @@ ECSocketResult GameServer::CompleteSend(LPVOID conn, int bytes)
 	int packet_size = ptr->GetSendPacketSize();
 	ptr->AddSendBytes(bytes);
 
-	if (add_bytes == packet_size) // ÆÐÅ¶ ÀüºÎ ´Ù º¸³Â´Ù.
+	if (add_bytes == packet_size) // íŒ¨í‚· ì „ë¶€ ë‹¤ ë³´ëƒˆë‹¤.
 	{
 		return ECSocketResult::FINISHED;
 	}
@@ -152,6 +152,6 @@ ECSocketResult GameServer::CompleteRecv(LPVOID conn, int bytes)
 
 void GameServer::CloseCon(LPVOID conn)
 {
-	std::cout << "À¯Àú Á¢¼Ó ²÷±è" << std::endl;
+	std::cout << "ìœ ì € ì ‘ì† ëŠê¹€" << std::endl;
 	ConnMap::getInstance()->Delete((Conn*)conn);
 }

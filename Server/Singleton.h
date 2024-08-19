@@ -1,22 +1,22 @@
-#pragma once
+ï»¿#pragma once
 
 class SingletonBase
 {
 private:
-	// º¹»ç »ı¼ºÀÚ
+	// ë³µì‚¬ ìƒì„±ì
 	SingletonBase(SingletonBase&) = delete;
 	SingletonBase(const SingletonBase&) = delete;
-	// º¹»ç ¿ÀÆÛ·¹ÀÌÅÍ
+	// ë³µì‚¬ ì˜¤í¼ë ˆì´í„°
 	SingletonBase& operator=(SingletonBase&) = delete;
 	SingletonBase& operator=(const SingletonBase&) = delete;
 	SingletonBase& operator=(const SingletonBase&&) = delete;
 
-	// ÀÌµ¿ »ı¼ºÀÚ
+	// ì´ë™ ìƒì„±ì
 	SingletonBase(SingletonBase&&) = delete;
 	SingletonBase(const SingletonBase&&) = delete;
 
 protected:
-	SingletonBase() = default; // Default »ı¼ºÀÚ »ç¿ë (ÇÊ¿ä½Ã »ı¼ºÀÚ¸¦ ¿øÇÏ´Âµ¥·Î ¼öÁ¤ÇØ¼­ »ç¿ëÇØµµ µÊ)
+	SingletonBase() = default; // Default ìƒì„±ì ì‚¬ìš© (í•„ìš”ì‹œ ìƒì„±ìë¥¼ ì›í•˜ëŠ”ë°ë¡œ ìˆ˜ì •í•´ì„œ ì‚¬ìš©í•´ë„ ë¨) 
 };
 
 template<typename T>

@@ -1,11 +1,11 @@
-#pragma once
+ï»¿#pragma once
 #include"Singleton.h"
 #include"User.h"
 #include<map>
 #include<mutex>
 #include<memory>
 
-// ÇöÀç Á¢¼ÓÁßÀÎ À¯Àú map
+// í˜„ì¬ ì ‘ì†ì¤‘ì¸ ìœ ì € map 
 class UserMap : public Singleton<UserMap>
 {
 public:

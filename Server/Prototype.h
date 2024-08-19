@@ -1,11 +1,11 @@
-#pragma once
+ï»¿#pragma once
 #include"Singleton.h"
 
 template <typename T>
 class Prototype {
 public:
     Prototype() { }
-    virtual ~Prototype() {  }// ¼Ò¸êÀÚ¸¦ °¡»ó ÇÔ¼ö·Î ¼±¾ðÇÏÁö ¾ÊÀ¸¸é ¾÷Ä³½ºÆÃÀÏ °æ¿ì ÀÚ½Ä Å¬·¡½ºÀÇ ¼Ò¸êÀÚ´Â °áÄÚ È£ÃâµÇÁö ¾Ê´Â´Ù.
+    virtual ~Prototype() {  }// ì†Œë©¸ìžë¥¼ ê°€ìƒ í•¨ìˆ˜ë¡œ ì„ ì–¸í•˜ì§€ ì•Šìœ¼ë©´ ì—…ìºìŠ¤íŒ…ì¼ ê²½ìš° ìžì‹ í´ëž˜ìŠ¤ì˜ ì†Œë©¸ìžëŠ” ê²°ì½” í˜¸ì¶œë˜ì§€ ì•ŠëŠ”ë‹¤. 
 public:
     virtual T* Create() = 0;
 };

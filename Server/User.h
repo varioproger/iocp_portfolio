@@ -1,4 +1,4 @@
-#pragma once
+ï»¿#pragma once
 #include"CharacterBase.h"
 #include<vector>
 #include<memory>
@@ -9,7 +9,7 @@ public:
 	User();
 	virtual ~User();
 private:
-	std::vector<std::shared_ptr<CharacterBase>> m_vcharacter; // ÇÑ °èÁ¤¿¡ Ä³¸¯ÅÍ°¡ ¿©·¯°³ ÀÏ ¼ö ÀÖ±â ¶§¹®¿¡
+	std::vector<std::shared_ptr<CharacterBase>> m_vcharacter; // í•œ ê³„ì •ì— ìºë¦­í„°ê°€ ì—¬ëŸ¬ê°œ ì¼ ìˆ˜ ìˆê¸° ë•Œë¬¸ì— 
 private:
 	SRWLock m_lock;
 };

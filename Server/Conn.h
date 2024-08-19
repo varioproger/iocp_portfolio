@@ -1,4 +1,4 @@
-#pragma once
+ï»¿#pragma once
 #include<GlobalDef.h>
 #include"../Global/PacketDefinition.h"
 #include"ServerGlobalDef.h"
@@ -54,9 +54,9 @@ private:
 	void ClearRecv();
 	void ClearSend();
 
-private:  // °ü·Ã ÀÛ¾÷ ÁøÇàÇØ¾ßÇÔ
-	std::unique_ptr<User> m_user; // ÇöÀç Á¢¼Ó ÁßÀÎ À¯Àú
-	std::unique_ptr<CharacterBase> m_character; // ÇöÀç Á¢¼Ó ÁßÀÎ 
+private:  // ê´€ë ¨ ì‘ì—… ì§„í–‰í•´ì•¼í•¨ 
+	std::unique_ptr<User> m_user; // í˜„ì¬ ì ‘ì† ì¤‘ì¸ ìœ ì €
+	std::unique_ptr<CharacterBase> m_character; // í˜„ì¬ ì ‘ì† ì¤‘ì¸ 
 
 private:
 	SOCKET m_sock;

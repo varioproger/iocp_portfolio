@@ -1,4 +1,4 @@
-#pragma once
+ï»¿#pragma once
 #include"Singleton.h"
 #include"CriticalSection.h"
 #include"Conn.h"
@@ -13,12 +13,12 @@ public:
 	Conn* Insert(SOCKET key);
 	void Delete(Conn* key);
 
-	// °´Ã¼ Á¢±Ù .value()
-	// ½ÇÁ¦·Î °ªÀ» °¡Áö°í ÀÖ´ÂÁö È®ÀÎ .has_value()
+	// ê°ì²´ ì ‘ê·¼ .value() 
+	// ì‹¤ì œë¡œ ê°’ì„ ê°€ì§€ê³  ìˆëŠ”ì§€ í™•ì¸ .has_value()
 	std::optional<Conn*> Select(SOCKET key);
 
 private:
-	std::map<SOCKET, Conn*> m_conn; //std::shared_ptr·Î ÇØ¾ß °ü¸®µµ ÆíÇÑ°Ç »ç½ÇÀÌÁö¸¸, IOCP Å°°ªÀ¸·Î ÁÙ ¼ö°¡ ¾ø±â ¶§¹®¿¡ ÀÏ¹İ Æ÷ÀÎÅÍ·Î ÁøÇà
+	std::map<SOCKET, Conn*> m_conn; //std::shared_ptrë¡œ í•´ì•¼ ê´€ë¦¬ë„ í¸í•œê±´ ì‚¬ì‹¤ì´ì§€ë§Œ, IOCP í‚¤ê°’ìœ¼ë¡œ ì¤„ ìˆ˜ê°€ ì—†ê¸° ë•Œë¬¸ì— ì¼ë°˜ í¬ì¸í„°ë¡œ ì§„í–‰
 	CriticalSection m_lock;
 };
 

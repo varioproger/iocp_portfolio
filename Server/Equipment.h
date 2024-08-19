@@ -1,9 +1,9 @@
-#pragma once
+ï»¿#pragma once
 #include"Equip.h"
 #include<vector>
 #include<memory>
 
-class Equipment // CharacterBase°¡ LockÀ» °¡Áö°í ÀÖÀ¸¹Ç·Î ÇÊ¿ä°¡ ¾ø´Ù.
+class Equipment // CharacterBaseê°€ Lockì„ ê°€ì§€ê³  ìˆìœ¼ë¯€ë¡œ í•„ìš”ê°€ ì—†ë‹¤. 
 {
 public:
 	Equipment();
@@ -12,8 +12,8 @@ public:
 	void UnequipItem();
 	void clear();
 private:
-	// ÀåÂø °ú ÀÎº¥ »çÀÌ¿¡¼­¸¸ »ç¿ëÇÒ°ÍÀÌ±â ¶§¹®¿¡ µû·Î shared¸¦ ÇÒ ÇÊ¿ä°¡ ¾øÀ½
-	// ÀåÂø Ä­Àº °íÁ¤ÀûÀÌ±â ¶§¹®¿¡ vector¸¦ ¾²´Â°ÍÀÌ´õ ¾ÈÀüÇÏ°í ºü¸£´Ù.
+	// ì¥ì°© ê³¼ ì¸ë²¤ ì‚¬ì´ì—ì„œë§Œ ì‚¬ìš©í• ê²ƒì´ê¸° ë•Œë¬¸ì— ë”°ë¡œ sharedë¥¼ í•  í•„ìš”ê°€ ì—†ìŒ
+	// ì¥ì°© ì¹¸ì€ ê³ ì •ì ì´ê¸° ë•Œë¬¸ì— vectorë¥¼ ì“°ëŠ”ê²ƒì´ë” ì•ˆì „í•˜ê³  ë¹ ë¥´ë‹¤.
 	std::vector<std::unique_ptr<Equip>> m_litem; 
 };
 

@@ -1,4 +1,4 @@
-#pragma once
+Ôªø#pragma once
 #include"Inven.h"
 #include"Equipment.h"
 #include"SRWLock.h"
@@ -11,9 +11,9 @@ public:
 protected:
 	virtual void SetBasicInfo() = 0;
 protected:
-	CharacterBasicInfo m_basic_info;
-	Inven m_inven; // ¿Œ∫•
-	Equipment m_equip; // ¿Â∫Ò ¿Â¬¯
+	CharacterBasicInfo m_basic_info; 
+	Inven m_inven; // Ïù∏Î≤§ 
+	Equipment m_equip; // Ïû•ÎπÑ Ïû•Ï∞©
 protected:
 	SRWLock m_lock;
 };

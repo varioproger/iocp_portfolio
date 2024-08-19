@@ -1,4 +1,4 @@
-#pragma once
+ï»¿#pragma once
 #include"../Global/PacketDefinition.h"
 #include"Conn.h"
 #include<Windows.h>
@@ -28,6 +28,6 @@ public:
 private:
 	virtual BOOL ProcessSignal(char* packet, Conn* ptr) override;
 private:
-	static std::mutex m_signal_lock; // ¿©·¯ ¾²·¹µå¿¡¼­ Á¢±Ù ÇÏ´õ¶óµµ ÇÑ¹ø¿¡ ÇÑ¹ø¾¿À¸·Î Á¦ÇÑ ÇÏ±â À§ÇÔ
+	static std::mutex m_signal_lock; // ì—¬ëŸ¬ ì“°ë ˆë“œì—ì„œ ì ‘ê·¼ í•˜ë”ë¼ë„ í•œë²ˆì— í•œë²ˆì”©ìœ¼ë¡œ ì œí•œ í•˜ê¸° ìœ„í•¨ 
 };
 

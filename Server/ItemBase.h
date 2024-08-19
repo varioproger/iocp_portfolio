@@ -1,4 +1,4 @@
-#pragma once
+ï»¿#pragma once
 #include"ServerGlobalDef.h"
 class ItemBase
 {
@@ -8,7 +8,7 @@ public:
 	void SetItemInfo(ItemType m_type, unsigned int m_idx, unsigned int m_visual_idx);
 protected:
 	ItemType m_type;
-	unsigned int m_uuid; // °íÀ¯Å°
-	unsigned int m_idx; // Å×ÀÌºí °ª
-	unsigned int m_visual_idx; // ¾ÆÀÌÄÜ °ª
+	unsigned int m_uuid; // ê³ ìœ í‚¤ 
+	unsigned int m_idx; // í…Œì´ë¸” ê°’ 
+	unsigned int m_visual_idx; // ì•„ì´ì½˜ ê°’ 
 };
