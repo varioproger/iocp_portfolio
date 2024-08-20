@@ -9,3 +9,8 @@ User::User()
 User::~User()
 {
 }
+
+SRWLock& User::GetLock()
+{
+    return m_lock;
+}

@@ -1,6 +1,5 @@
 ﻿#include "Conn.h"
 #include"ServerGlobalDef.h"
-#include"SRWLockGuard.h"
 
 Conn::Conn(SOCKET sock) : m_sock(sock)
 {

@@ -3,6 +3,10 @@
 enum PacketType {
 	PT_Base,
 	PT_Signal,
+	PT_Move,
+	PT_UseItem,
+	PT_RootItem,
+	PT_Attack,
 	PT_None,
 };
 struct BaseMsg {

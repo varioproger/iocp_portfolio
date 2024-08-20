@@ -54,7 +54,7 @@ private:
 	void ClearRecv();
 	void ClearSend();
 
-private:  // 관련 작업 진행해야함 
+public:  // 관련 작업 진행해야함 
 	std::unique_ptr<User> m_user; // 현재 접속 중인 유저
 	std::unique_ptr<CharacterBase> m_character; // 현재 접속 중인 
 
