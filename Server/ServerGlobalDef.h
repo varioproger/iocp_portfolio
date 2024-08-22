@@ -33,3 +33,25 @@ struct CharacterBasicInfo {
 	int dex;
 	int luck;
 };
+
+/*
+구현부는 제외함.
+*/
+#define BEGIN_STRUCT(StructName)                                                                                                                    \
+class StructName																																	\
+   {		
+
+#define STRUCT_MEMBER(MemberType, MemberName)																										\
+   public:																																			\
+   MemberType MemberName;
+
+#define END_STRUCT(StructName)																														\
+   }
+
+
+
+BEGIN_STRUCT(STRUCT_SERVERLIST)
+STRUCT_MEMBER(int, m_a)
+STRUCT_MEMBER(int, m_b)
+STRUCT_MEMBER(int, m_c)
+END_STRUCT(STRUCT_SERVERLIST);

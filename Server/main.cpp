@@ -4,10 +4,14 @@
 #include"ConnMap.h"
 #include"CharacterPrototype.h"
 #include"ItemPrototype.h"
+#include"TableManager.h"
 #include<vector>
 #include<iostream>
 #include <stdlib.h>
 #include <ws2tcpip.h>
+
+
+#include"MiniDump.h"
 
 #define REGISTER_KEY (WM_USER+1)
 
@@ -52,11 +56,18 @@ int main()
 {
 	SetConsoleCtrlHandler((PHANDLER_ROUTINE)CtrlHandler, TRUE);
 
-	START_SERVER(GameServer, gs);
-	SOCKET sock = SET_SERVER(gs, sock);
+	Mini_Dump::gpDumper = new Mini_Dump; // 미니덤프*/
+	TABLEMANAGER->init();
+	TABLEMANAGER->SetInfo();
+
 
 	CharacterPrototypeFactory->Init();
 	ItemPrototypeFactory->Init();
+
+
+	START_SERVER(GameServer, gs);
+	SOCKET sock = SET_SERVER(gs, sock);
+
 	size_t cpu_count = gs.GetThreadCount();
 	gs.CreateIOPort();
 

@@ -28,6 +28,15 @@
     <Filter Include="Character">
       <UniqueIdentifier>{f71173a0-f85b-4b63-b63c-e583beece6f4}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Read">
+      <UniqueIdentifier>{7eb1ca81-41ee-457b-b456-f3547c865658}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Table">
+      <UniqueIdentifier>{b824057c-eb6e-4c7c-9b3e-61dffc3af75a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Dump">
+      <UniqueIdentifier>{b9a09d7a-a9c6-4b00-9c2a-320d4112e2bf}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -89,6 +98,27 @@
     </ClCompile>
     <ClCompile Include="Warrior.cpp">
       <Filter>Character</Filter>
+    </ClCompile>
+    <ClCompile Include="MiniDump.cpp">
+      <Filter>Dump</Filter>
+    </ClCompile>
+    <ClCompile Include="TableManager.cpp">
+      <Filter>Table</Filter>
+    </ClCompile>
+    <ClCompile Include="TBServerList.cpp">
+      <Filter>Table</Filter>
+    </ClCompile>
+    <ClCompile Include="ReadManager.cpp">
+      <Filter>Read</Filter>
+    </ClCompile>
+    <ClCompile Include="MonostateTable.cpp">
+      <Filter>DesignPattern</Filter>
+    </ClCompile>
+    <ClCompile Include="TXTRead.cpp">
+      <Filter>Read</Filter>
+    </ClCompile>
+    <ClCompile Include="CSVRead.cpp">
+      <Filter>Read</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -166,6 +196,33 @@
     </ClInclude>
     <ClInclude Include="Warrior.h">
       <Filter>Character</Filter>
+    </ClInclude>
+    <ClInclude Include="MiniDump.h">
+      <Filter>Dump</Filter>
+    </ClInclude>
+    <ClInclude Include="TableBase.h">
+      <Filter>Table</Filter>
+    </ClInclude>
+    <ClInclude Include="TableManager.h">
+      <Filter>Table</Filter>
+    </ClInclude>
+    <ClInclude Include="TBServerList.h">
+      <Filter>Table</Filter>
+    </ClInclude>
+    <ClInclude Include="ReadBase.h">
+      <Filter>Read</Filter>
+    </ClInclude>
+    <ClInclude Include="ReadManager.h">
+      <Filter>Read</Filter>
+    </ClInclude>
+    <ClInclude Include="MonostateTable.h">
+      <Filter>DesignPattern</Filter>
+    </ClInclude>
+    <ClInclude Include="TXTRead.h">
+      <Filter>Read</Filter>
+    </ClInclude>
+    <ClInclude Include="CSVRead.h">
+      <Filter>Read</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

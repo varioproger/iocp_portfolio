@@ -159,6 +159,7 @@
     </ClCompile>
     <ClCompile Include="CriticalSection.cpp" />
     <ClCompile Include="CSLockGuard.cpp" />
+    <ClCompile Include="CSVRead.cpp" />
     <ClCompile Include="Equip.cpp" />
     <ClCompile Include="Equipment.cpp" />
     <ClCompile Include="GameServer.cpp">
@@ -171,12 +172,18 @@
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</ExcludedFromBuild>
     </ClCompile>
+    <ClCompile Include="MiniDump.cpp" />
+    <ClCompile Include="MonostateTable.cpp" />
     <ClCompile Include="PacketProcess.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">false</ExcludedFromBuild>
     </ClCompile>
     <ClCompile Include="Potion.cpp" />
+    <ClCompile Include="ReadManager.cpp" />
     <ClCompile Include="SRWLock.cpp" />
     <ClCompile Include="SRWLockGuard.cpp" />
+    <ClCompile Include="TableManager.cpp" />
+    <ClCompile Include="TBServerList.cpp" />
+    <ClCompile Include="TXTRead.cpp" />
     <ClCompile Include="User.cpp" />
     <ClCompile Include="UserMap.cpp" />
     <ClCompile Include="Warrior.cpp" />
@@ -195,8 +202,11 @@
     </ClInclude>
     <ClInclude Include="CriticalSection.h" />
     <ClInclude Include="CSLockGuard.h" />
+    <ClInclude Include="CSVRead.h" />
     <ClInclude Include="Equip.h" />
     <ClInclude Include="Equipment.h" />
+    <ClInclude Include="MiniDump.h" />
+    <ClInclude Include="MonostateTable.h" />
     <ClInclude Include="Prototype.h" />
     <ClInclude Include="GameServer.h">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">false</ExcludedFromBuild>
@@ -208,12 +218,18 @@
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">false</ExcludedFromBuild>
     </ClInclude>
     <ClInclude Include="Potion.h" />
+    <ClInclude Include="ReadBase.h" />
+    <ClInclude Include="ReadManager.h" />
     <ClInclude Include="ServerGlobalDef.h" />
     <ClInclude Include="Singleton.h">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">false</ExcludedFromBuild>
     </ClInclude>
     <ClInclude Include="SRWLock.h" />
     <ClInclude Include="SRWLockGuard.h" />
+    <ClInclude Include="TableBase.h" />
+    <ClInclude Include="TableManager.h" />
+    <ClInclude Include="TBServerList.h" />
+    <ClInclude Include="TXTRead.h" />
     <ClInclude Include="User.h" />
     <ClInclude Include="UserMap.h" />
     <ClInclude Include="Warrior.h" />
