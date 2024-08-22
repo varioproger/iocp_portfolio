@@ -1,6 +1,7 @@
 ﻿#include "PacketProcess.h"
 #include<iostream>
 #include"SRWLockGuard.h"
+
 std::mutex PacketProcess::m_signal_lock;
 std::mutex PacketProcess::m_move_lock;
 std::mutex PacketProcess::m_useitem_lock; 
@@ -40,8 +41,8 @@ BOOL PacketProcess::ProcessPacket(Conn* ptr)
 
 BOOL PacketProcess::ProcessSignal(char* packet, Conn* ptr)
 {
-	SRWLockExGuard lock(&ptr->m_user->GetLock()); //한 유저가 동시에 시그널을 보낼 순 있지만 순차적으로 처리, 하지만 다른 유저가 시그널을 보낼 경우는 그냥 패스
-	std::lock_guard lock(m_signal_lock);
+	SRWLockExGuard user_lock(&ptr->m_user->GetLock()); //한 유저가 동시에 시그널을 보낼 순 있지만 순차적으로 처리, 하지만 다른 유저가 시그널을 보낼 경우는 그냥 패스
+	std::lock_guard lock(m_signal_lock); // 한번의 하나의 signal을 순차적으로 처리
 	SignalMsg* msg = (SignalMsg*)packet;
 
 	std::cout << msg->msg << std::endl;
@@ -57,26 +58,26 @@ BOOL PacketProcess::ProcessSignal(char* packet, Conn* ptr)
 
 BOOL PacketProcess::ProcessMove(char* packet, Conn* ptr)
 {
-	SRWLockExGuard lock(&ptr->m_user->GetLock()); // 시그널과 같은 이유
+	SRWLockExGuard user_lock(&ptr->m_user->GetLock()); // 시그널과 같은 이유
 	std::scoped_lock lock(m_attack_lock, m_move_lock); // 공격을 하는 동안에는 이동 할 수 없기 때문
 	return 0;
 }
 BOOL PacketProcess::ProcessUseItem(char* packet, Conn* ptr)
 {
-	SRWLockExGuard lock(&ptr->m_user->GetLock()); // 시그널과 같은 이유
+	SRWLockExGuard user_lock(&ptr->m_user->GetLock()); // 시그널과 같은 이유
 	std::scoped_lock lock(m_attack_lock, m_useitem_lock); // 공격을 하는 동안에는 아이템 사용 할 수 없기 때문
 	return 0;
 }
 BOOL PacketProcess::ProcessRootItem(char* packet, Conn* ptr)
 {
-	SRWLockExGuard lock(&ptr->m_user->GetLock()); // 시그널과 같은 이유
+	SRWLockExGuard user_lock(&ptr->m_user->GetLock()); // 시그널과 같은 이유
 	std::scoped_lock lock(m_attack_lock, m_useitem_lock,m_rootitem_lock); // 공격을 하는 동안이나 아이템 사용중에는 아이템 루팅을 할 수 없기 때문
 	return 0;
 }
 
 BOOL PacketProcess::ProcessAttack(char* packet, Conn* ptr)
 {
-	SRWLockExGuard lock(&ptr->m_user->GetLock()); // 시그널과 같은 이유
+	SRWLockExGuard user_lock(&ptr->m_user->GetLock()); // 시그널과 같은 이유
 	std::unique_lock lock(m_attack_lock); // 이동, 아이템사용, 아이템 루팅에 이미 m_attack_lock을 걸기 때문에 여기는 따로 안걸어줘도 된다.
 	return 0;
 }
