@@ -1,9 +1,10 @@
 #include "ReadManager.h"
 
-ReadManager::ReadManager() : m_read(0)
+ReadManager::ReadManager() : m_read(nullptr)
 {
-	m_txt = std::shared_ptr<TXTRead>();
-	m_csv = std::shared_ptr<CSVRead>();
+	m_txt = std::make_shared<TXTRead>();
+	m_csv = std::make_shared<CSVRead>();
+	m_bin = std::make_shared<BinRead>();
 }
 
 
@@ -20,6 +21,10 @@ std::vector<std::vector<std::string>> ReadManager::DoRead(std::string&& path, st
 	else if (file_type.compare("bin") == 0)
 	{
 		ChangeBin();
+	}
+	if (m_read == nullptr)
+	{
+		return std::vector<std::vector<std::string>>();
 	}
 	return m_read->DoRead(std::move(path), std::move(delims));
 
