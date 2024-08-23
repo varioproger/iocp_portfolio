@@ -1,11 +1,12 @@
 #pragma once
 #include"ReadBase.h"
 
-class TXTRead : public ReadBase
+class BinRead : public ReadBase
 {
 public:
-	TXTRead();
-	virtual~TXTRead();
+	BinRead();
+	virtual ~BinRead();
 	virtual std::vector<std::vector<std::string>> DoRead(std::string&& path, std::string&& delims) override;
 	virtual std::vector<char> DoRead(std::string&& path) override;
 };
+

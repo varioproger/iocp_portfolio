@@ -149,6 +149,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Archer.cpp" />
+    <ClCompile Include="BinRead.cpp" />
     <ClCompile Include="CharacterBase.cpp" />
     <ClCompile Include="CharacterMap.cpp" />
     <ClCompile Include="Conn.cpp">
@@ -191,6 +192,7 @@
   <ItemGroup>
     <ClInclude Include="..\Global\PacketDefinition.h" />
     <ClInclude Include="Archer.h" />
+    <ClInclude Include="BinRead.h" />
     <ClInclude Include="CharacterBase.h" />
     <ClInclude Include="CharacterMap.h" />
     <ClInclude Include="CharacterPrototype.h" />

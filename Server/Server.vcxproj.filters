@@ -120,6 +120,9 @@
     <ClCompile Include="CSVRead.cpp">
       <Filter>Read</Filter>
     </ClCompile>
+    <ClCompile Include="BinRead.cpp">
+      <Filter>Read</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="PacketProcess.h">
@@ -222,6 +225,9 @@
       <Filter>Read</Filter>
     </ClInclude>
     <ClInclude Include="CSVRead.h">
+      <Filter>Read</Filter>
+    </ClInclude>
+    <ClInclude Include="BinRead.h">
       <Filter>Read</Filter>
     </ClInclude>
   </ItemGroup>

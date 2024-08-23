@@ -11,7 +11,8 @@ CSVRead::~CSVRead()
 {
 }
 
-std::vector<std::vector<std::string>> CSVRead::DoRead(std::string Path, std::string Delims)
+
+std::vector<std::vector<std::string>> CSVRead::DoRead(std::string&& path, std::string&& delims)
 {
 	std::vector<std::vector<std::string>> OutPut;
 	std::ifstream file;
@@ -20,7 +21,7 @@ std::vector<std::vector<std::string>> CSVRead::DoRead(std::string Path, std::str
 	elem.clear();
 	OutPut.clear();
 
-	file.open(Path);
+	file.open(path);
 	if (file.is_open())
 	{
 		while (std::getline(file, str))
@@ -29,18 +30,18 @@ std::vector<std::vector<std::string>> CSVRead::DoRead(std::string Path, std::str
 			{
 				std::string::size_type begIdx, endIdx;
 				// search beginning of the first word
-				begIdx = str.find_first_not_of(Delims);
+				begIdx = str.find_first_not_of(delims);
 				// while beginning of a word found
 				while (begIdx != std::string::npos) {
 					// search end of the actual word
-					endIdx = str.find_first_of(Delims, begIdx);
+					endIdx = str.find_first_of(delims, begIdx);
 					if (endIdx == std::string::npos) {
 						// end of word is end of line
 						endIdx = str.length();
 					}
 					elem.push_back(str.substr(begIdx, endIdx - begIdx));
 					// search beginning of the next word
-					begIdx = str.find_first_not_of(Delims, endIdx);
+					begIdx = str.find_first_not_of(delims, endIdx);
 				}
 				OutPut.push_back(elem);
 				elem.clear();
@@ -49,4 +50,9 @@ std::vector<std::vector<std::string>> CSVRead::DoRead(std::string Path, std::str
 	}
 	file.close();
 	return OutPut;
+}
+
+std::vector<char> CSVRead::DoRead(std::string&& path)
+{
+	return std::vector<char>();
 }
