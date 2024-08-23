@@ -128,16 +128,16 @@ LONG Mini_Dump::WriteMiniDump(_EXCEPTION_POINTERS *pExceptionInfo)
 void Mini_Dump::VSetDumpFileName()
 {
 	time_t timer = time(NULL);
-	struct tm *t = 0;
+	struct tm t;
 	errno_t error;
-	error = localtime_s(t ,&timer);
+	error = localtime_s(&t ,&timer);
 	if(error!=0)
 	{
 		wsprintf(m_szDumpPath, "%s%s_%d.dmp", m_szAppPath, m_szAppBaseName, timer);
 	}
 	else
 	{
-		wsprintf(m_szDumpPath, "%s%s_%4d-%2d-%2d-%2d-%2d-%2d.dmp", m_szAppPath, m_szAppBaseName, t->tm_year + 1900, t->tm_mon + 1, t->tm_mday, t->tm_hour, t->tm_min, t->tm_sec);
+		wsprintf(m_szDumpPath, "%s%s_%4d-%2d-%2d-%2d-%2d-%2d.dmp", m_szAppPath, m_szAppBaseName, t.tm_year + 1900, t.tm_mon + 1, t.tm_mday, t.tm_hour, t.tm_min, t.tm_sec);
 
 	}
 	

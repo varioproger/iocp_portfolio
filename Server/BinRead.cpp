@@ -1,6 +1,8 @@
 #include "BinRead.h"
 #include<fstream>
 #include<algorithm>
+
+#include<iostream>
 BinRead::BinRead()
 {
 }
@@ -19,8 +21,14 @@ std::vector<char> BinRead::DoRead(std::string&& path)
 	std::ifstream file(path, std::ios::binary);
 	if (file.is_open())
 	{
-		std::vector<char> buffer(std::istreambuf_iterator<char>(file), {});
-		std::copy(Data.begin(), Data.end(), std::back_inserter(buffer));
+		file.seekg(0, std::ios_base::end);
+		auto length = file.tellg();
+		file.seekg(0, std::ios_base::beg);
+
+		std::vector<char> buffer(length);
+		file.read(reinterpret_cast<char*>(buffer.data()), length);
+
+		std::copy(buffer.begin(), buffer.end(), std::back_inserter(Data));
 	}
 	file.close();
 	return Data;
