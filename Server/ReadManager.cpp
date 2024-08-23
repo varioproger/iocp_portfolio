@@ -21,7 +21,7 @@ std::vector<std::vector<std::string>> ReadManager::DoRead(std::string&& path, st
 	{
 		ChangeBin();
 	}
-	return std::move(m_read->DoRead(std::move(path), std::move(delims)));
+	return m_read->DoRead(std::move(path), std::move(delims));
 
 }
 std::vector<char> ReadManager::DoRead(std::string&& path, std::string&& file_type)
@@ -30,7 +30,7 @@ std::vector<char> ReadManager::DoRead(std::string&& path, std::string&& file_typ
 	{
 		ChangeBin();
 	}
-	return std::move(m_read->DoRead(std::move(path)));
+	return m_read->DoRead(std::move(path));
 }
 void ReadManager::ChangeTXT()
 {
